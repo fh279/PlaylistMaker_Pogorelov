@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
             override fun onClick(v: View?) {
                 Toast.makeText(
                     this@MainActivity,
-                    R.string.media_button_toast_text,
+                    R.string.search_button_toast_text,
                     Toast.LENGTH_SHORT
                 ).show()
             }
