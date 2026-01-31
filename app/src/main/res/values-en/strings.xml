@@ -4,4 +4,13 @@
     <string name="search_text">Search</string>
     <string name="media_string">Media</string>
     <string name="settings_title">Settings</string>
+    <string name="back_button">Back</string>
+    <string name="settingsTitle">Back</string>
+    <string name="dark_theme_text">Dark Theme</string>
+    <string name="share_app_text">Share app</string>
+    <string name="support_icon">SupportIcon</string>
+    <string name="support_text">Write to support</string>
+    <string name="dark_theme">Dark Theme</string>
+    <string name="share_app_icon">ShareAppIcon</string>
+    <string name="user_argeement">User agreement</string>
 </resources>
