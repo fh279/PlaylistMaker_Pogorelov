@@ -14,4 +14,7 @@
     <string name="share_app_icon">ShareAppIcon</string>
     <string name="user_argeement">Пользовательское соглашение</string>
     <string name="arrow_forward" translatable="false">arrow_forward</string>
+    <string name="search_button_toast_text">Вы кликнули на кнопку \"Search\"</string>
+    <string name="media_button_toast_text">Вы кликнули на кнопку \"Media\"</string>
+    <string name="settings_button_toast_text">Вы кликнули на кнопку \"Settings\"</string>
 </resources>
