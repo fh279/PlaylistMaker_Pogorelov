@@ -16,4 +16,6 @@
     <string name="search_button_toast_text">You clicked on \"Search\" button</string>
     <string name="media_button_toast_text">You clicked on \"Media\" button</string>
     <string name="settings_button_toast_text">You clicked on \"Settings\" button</string>
+    <string name="search_screen_blank_text">This is a blank for Search screen</string>
+    <string name="media_library_blank_text">This is a blank for Media Library screen</string>
 </resources>

@@ -17,4 +17,6 @@
     <string name="search_button_toast_text">Вы кликнули на кнопку \"Search\"</string>
     <string name="media_button_toast_text">Вы кликнули на кнопку \"Media\"</string>
     <string name="settings_button_toast_text">Вы кликнули на кнопку \"Settings\"</string>
+    <string name="search_screen_blank_text">Это заготовка экрана поиска</string>
+    <string name="media_library_blank_text">Это заготовка экрана Медиа Библиотеки</string>
 </resources>

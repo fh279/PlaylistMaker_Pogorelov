@@ -23,6 +23,13 @@
         <activity
             android:name="com.example.playlistMaker.SettingsActivity"
             android:exported="true" />
+        <activity
+            android:name="com.example.playlistMaker.MediaLibraryActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.example.playlistMaker.SearchActivity"
+            android:exported="true" />
+
 
     </application>
 </manifest>
