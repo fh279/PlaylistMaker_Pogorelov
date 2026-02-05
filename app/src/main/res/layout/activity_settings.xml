@@ -39,12 +39,12 @@
 
         </TextView>
 
-        <androidx.appcompat.widget.SwitchCompat
+        <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            >
-        </androidx.appcompat.widget.SwitchCompat>
+            tools:ignore="UseSwitchCompatOrMaterialXml">
+        </Switch>
     </LinearLayout>
 
     <LinearLayout
