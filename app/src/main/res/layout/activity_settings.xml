@@ -17,7 +17,6 @@
         app:titleTextAppearance="@style/SettingsScreenToolbarTitleStyle"
         app:title="@string/settings_title"
         app:navigationIcon="?attr/homeAsUpIndicator">
-
     </com.google.android.material.appbar.MaterialToolbar>
 
     <LinearLayout
@@ -34,7 +33,6 @@
             android:text="@string/dark_theme_text"
             android:textSize="@dimen/settings_screen_item_text_size"
             android:layout_weight="1">
-
         </TextView>
 
         <Switch
@@ -76,7 +74,6 @@
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:layout_marginStart="16dp">
-
         <TextView
             android:layout_width="0sp"
             android:layout_height="wrap_content"
@@ -102,7 +99,6 @@
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:layout_marginStart="16dp">
-
         <TextView
             android:layout_width="0sp"
             android:layout_height="wrap_content"
@@ -121,3 +117,4 @@
         </ImageView>
     </LinearLayout>
 </LinearLayout>
+
