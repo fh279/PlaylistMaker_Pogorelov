@@ -23,8 +23,10 @@
             android:layout_height="?attr/actionBarSize"
             app:contentInsetStart="0dp"
             app:title="@string/title"
-            app:titleTextAppearance="@style/ToolbarTitleStyle"
-            app:titleTextColor="@android:color/white" />
+            app:titleTextAppearance="@style/MainScreenToolbarTitleStyle"
+            app:titleTextColor="@android:color/white"
+            />
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
@@ -44,12 +46,12 @@
             android:gravity="center"
             android:text="@string/search_text"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            app:cornerRadius="16dp"
+            android:textSize="@dimen/main_screen_item_text_size"
+            app:cornerRadius="@dimen/main_screen_button_corner_radius"
             app:icon="@drawable/magnifier_icon"
             app:iconGravity="textStart"
-            app:iconPadding="8dp"
-            app:iconSize="24dp"
+            app:iconPadding="@dimen/main_screen_text_icon_padding"
+            app:iconSize="@dimen/main_screen_button_icon_size"
             app:iconTint="@color/black" />
 
         <Button
@@ -62,12 +64,12 @@
             android:drawableStart="@drawable/magnifier_icon"
             android:text="@string/media_string"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            app:cornerRadius="16dp"
+            android:textSize="@dimen/main_screen_item_text_size"
+            app:cornerRadius="@dimen/main_screen_button_corner_radius"
             app:icon="@drawable/music_note_icon_svg"
             app:iconGravity="textStart"
-            app:iconPadding="8dp"
-            app:iconSize="24dp"
+            app:iconPadding="@dimen/main_screen_text_icon_padding"
+            app:iconSize="@dimen/main_screen_button_icon_size"
             app:iconTint="@color/black" />
 
         <Button
@@ -81,12 +83,12 @@
             android:drawableStart="@drawable/magnifier_icon"
             android:text="@string/settings_title"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            app:cornerRadius="16dp"
+            android:textSize="@dimen/main_screen_item_text_size"
+            app:cornerRadius="@dimen/main_screen_button_corner_radius"
             app:icon="@drawable/gear_icon"
             app:iconGravity="textStart"
-            app:iconPadding="8dp"
-            app:iconSize="24dp"
+            app:iconPadding="@dimen/main_screen_text_icon_padding"
+            app:iconSize="@dimen/main_screen_button_icon_size"
             app:iconTint="@color/black" />
     </LinearLayout>
 </LinearLayout>
