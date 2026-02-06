@@ -29,7 +29,5 @@
         <activity
             android:name="com.example.playlistMaker.SearchActivity"
             android:exported="false" />
-
-
     </application>
 </manifest>

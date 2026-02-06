@@ -88,7 +88,6 @@
             app:iconPadding="8dp"
             app:iconSize="24dp"
             app:iconTint="@color/black" />
-
     </LinearLayout>
-
 </LinearLayout>
+
