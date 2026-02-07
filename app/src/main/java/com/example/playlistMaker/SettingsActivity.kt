@@ -16,7 +16,7 @@ class SettingsActivity : AppCompatActivity() {
         toolbar.setNavigationOnClickListener { finishAffinity() }
 
         toolbar.setNavigationOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 }
