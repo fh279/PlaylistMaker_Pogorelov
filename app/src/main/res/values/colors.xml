@@ -3,4 +3,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="custom_color">#00000000</color>
+    <color name="settings_icons_color">#AEAFB4</color>
 </resources>
