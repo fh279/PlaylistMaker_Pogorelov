@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.playlistmaker"
+    namespace = "com.example.playlistMaker"
     compileSdk = 36
 
     defaultConfig {

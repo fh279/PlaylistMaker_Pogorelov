@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/settings_screen_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginBottom="24dp"
+        app:titleTextAppearance="@style/SettingsScreenToolbarTitleStyle"
+        app:title="@string/settings_title"
+        app:navigationIcon="?attr/homeAsUpIndicator">
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/settings_screen_item_height"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginStart="16dp">
+
+        <TextView
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="@string/dark_theme_text"
+            android:textSize="@dimen/settings_screen_item_text_size"
+            android:layout_weight="1">
+        </TextView>
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            tools:ignore="UseSwitchCompatOrMaterialXml">
+        </Switch>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/settings_screen_item_height"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginStart="16dp">
+
+        <TextView
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:text="@string/share_app_text"
+            android:textSize="@dimen/settings_screen_item_text_size"
+            android:layout_weight="1">
+        </TextView>
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="@string/share_app_icon"
+            android:src="@drawable/baseline_share_24"
+            android:backgroundTint="@color/white">
+        </ImageView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/settings_screen_item_height"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginStart="16dp">
+        <TextView
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:text="@string/support_text"
+            android:textSize="@dimen/settings_screen_item_text_size"
+            android:layout_weight="1">
+
+        </TextView>
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="@string/support_icon"
+            android:src="@drawable/support"
+            android:backgroundTint="@color/white">
+        </ImageView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/settings_screen_item_height"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginStart="16dp">
+        <TextView
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:text="@string/user_argeement"
+            android:textSize="16sp"
+            android:layout_weight="1">
+        </TextView>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="@string/arrow_forward"
+            android:src="@drawable/arrow_forward"
+            android:backgroundTint="@color/white">
+        </ImageView>
+    </LinearLayout>
+</LinearLayout>
+

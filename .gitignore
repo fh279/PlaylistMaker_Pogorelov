@@ -1,92 +1,34 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
-local.properties
-
 # Gradle files
 .gradle/
 build/
 
-# Signing files (ключи подписи — НИКОГДА в репозиторий!)
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Log/OS Files
+*.log
+
+# Android Studio generated files and folders
+captures/
+.externalNativeBuild/
+.cxx/
+*.aab
+*.apk
+output-metadata.json
+
+# IntelliJ
+*.iml
+.idea/
+misc.xml
+deploymentTargetDropDown.xml
+render.experimental.xml
+
+# Keystore files
 *.jks
 *.keystore
 
-# Google Services config (ключи API — НЕ выкладывать!)
+# Google Services (e.g. APIs or Firebase)
 google-services.json
 
-# Android Studio generated files
-.idea/
-.cxx/
-.externalNativeBuild/
-captures/
-
-# Logs and profilers
-*.log
+# Android Profiling
 *.hprof
-
-# Built application files
-*.apk
-*.ap_
-
-# OS-specific files
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Crashlytics config
-com_crashlytics_export_strings.xml
-
-# Generated files (старые версии Android Studio)
-gen/
-out/
-
-# Java class files (не нужны в репозитории)
-*.class
-
-# ProGuard generated files (если используется)
-proguard/
-
-
-# Emulator files
-*.avd/
-
-# Backup files
-*.bak
-
-# IDE-specific (VS Code, Sublime, etc.)
-.vscode/
-*.sublime-project
-*.sublime-workspace
-
-# Temporary files
-*.tmp
-*.temp
-
-
-# Kotlin metadata (обычно не требуется)
-*.kotlin_module
-
-# Android Navigation Editor temp files
-.navigation/
-
-# Jetpack Compose preview files
-build-compose/
-
-
-# Firebase config (если есть)
-firebase-debug.properties
-firebase-release.properties
