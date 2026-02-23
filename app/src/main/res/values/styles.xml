@@ -26,4 +26,51 @@
         <item name="iconSize">@dimen/main_screen_button_icon_size</item>
         <item name="iconTint">@color/black</item>
     </style>
+
+
+
+        <!-- Стиль для контейнера пункта настроек -->
+        <style name="SettingsItemContainer">
+            <item name="android:layout_width">match_parent</item>
+            <item name="android:layout_height">@dimen/settings_screen_item_height</item>
+            <item name="android:orientation">horizontal</item>
+            <item name="android:gravity">center_vertical</item>
+            <item name="android:paddingStart">16dp</item>
+            <item name="android:paddingEnd">16dp</item>
+        </style>
+
+        <!-- Стиль для текста в пункте настроек -->
+        <style name="SettingsItemText">
+            <item name="android:layout_width">0dp</item>
+            <item name="android:layout_height">wrap_content</item>
+            <item name="android:textSize">@dimen/settings_screen_item_text_size</item>
+            <item name="android:layout_weight">1</item>
+        </style>
+
+        <!-- Стиль для иконки в пункте настроек -->
+        <style name="SettingsItemIcon">
+            <item name="android:layout_width">24dp</item>
+            <item name="android:layout_height">24dp</item>
+            <item name="android:layout_marginEnd">12dp</item>
+            <item name="android:backgroundTint">@color/white</item>
+        </style>
+
+        <!-- Стиль для тулбара экрана настроек -->
+        <style name="SettingsToolbar">
+            <item name="android:layout_width">match_parent</item>
+            <item name="android:layout_height">56dp</item>
+            <item name="android:layout_marginBottom">24dp</item>
+            <item name="titleTextAppearance">@style/SettingsScreenToolbarTitleStyle</item>
+        </style>
+
+        <!-- Стиль для переключателя -->
+        <style name="SettingsSwitch">
+            <item name="android:layout_width">wrap_content</item>
+            <item name="android:layout_height">wrap_content</item>
+            <item name="android:layout_marginEnd">10dp</item>
+        </style>
+
+
+
+
 </resources>
