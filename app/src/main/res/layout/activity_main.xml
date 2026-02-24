@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:theme="@style/Theme.PlaylistMaker"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_weight="1"
-    android:background="#3772E7"
+    android:background="?attr/colorPrimary"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     android:paddingHorizontal="16dp">
 
     <com.google.android.material.appbar.MaterialToolbar
+        style="@style/MainScreenToolbarTitleStyle"
         android:id="@+id/main_screen_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:backgroundTint="#3772E7"
         android:foregroundGravity="left"
         android:stateListAnimator="@null"
         app:contentInsetStart="0dp"
         app:title="@string/title"
-        app:titleTextAppearance="@style/MainScreenToolbarTitleStyle"
-        app:titleTextColor="@android:color/white" />
-
+        />
 
     <Button
         style="@style/MainScreenButtonsStyle"

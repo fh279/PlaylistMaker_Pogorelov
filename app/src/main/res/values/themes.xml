@@ -1,12 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Base.Theme.PlaylistMaker" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Base.Theme.PlaylistMaker" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Фон экрана. синий -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!-- Текст заголовка. белый -->
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <!-- Фон кнопок. Белый -->
+        <item name="colorSurface">@color/colorPrimary</item>
+        <!-- Текст кнопок. Черный -->
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <!-- Иконки элементов списка настроек -->
+        <item name="colorOnSurfaceVariant">@color/colorOnSurfaceVariant</item>
     </style>
 
-    <style name="Theme.PlaylistMaker" parent="Base.Theme.PlaylistMaker" />
-    <style name="Base.Theme.MaterialComponents.DayNight.NoActionBar"
-        parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
     </style>
-
-    <style name="Theme.MaterialComponents.DayNight.NoActionBar"
-        parent="Base.Theme.MaterialComponents.DayNight.NoActionBar" />
 </resources>

@@ -10,8 +10,8 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/settings_screen_toolbar"
         style="@style/SettingsToolbar"
+        android:id="@+id/settings_screen_toolbar"
         app:title="@string/settings_title"
         app:navigationIcon="?attr/homeAsUpIndicator" />
 
