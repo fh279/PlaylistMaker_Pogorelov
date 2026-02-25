@@ -16,24 +16,22 @@
         app:navigationIcon="?attr/homeAsUpIndicator" />
 
     <LinearLayout
-        style="@style/SettingsItemContainer">
-
+        style="@style/SettingsItemContainer"
+        android:id="@+id/btnThemeSwitcher">
         <TextView
             style="@style/SettingsItemText"
             android:text="@string/dark_theme_text" />
-
         <Switch
             style="@style/SettingsSwitch"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
     </LinearLayout>
 
     <LinearLayout
-        style="@style/SettingsItemContainer">
-
+        style="@style/SettingsItemContainer"
+        android:id="@+id/btnShareApp">
         <TextView
             style="@style/SettingsItemText"
             android:text="@string/share_app_text" />
-
         <ImageView
             style="@style/SettingsItemIcon"
             android:contentDescription="@string/share_app_icon"
@@ -41,12 +39,11 @@
     </LinearLayout>
 
     <LinearLayout
-        style="@style/SettingsItemContainer">
-
+        style="@style/SettingsItemContainer"
+        android:id="@+id/btnWriteToSupport">
         <TextView
             style="@style/SettingsItemText"
             android:text="@string/support_text" />
-
         <ImageView
             style="@style/SettingsItemIcon"
             android:contentDescription="@string/support_icon"
@@ -54,13 +51,12 @@
     </LinearLayout>
 
     <LinearLayout
-        style="@style/SettingsItemContainer">
-
+        style="@style/SettingsItemContainer"
+        android:id="@+id/btnUserAgreement">
         <TextView
             style="@style/SettingsItemText"
             android:text="@string/user_argeement"
             android:textSize="16sp" />
-
         <ImageView
             style="@style/SettingsItemIcon"
             android:layout_width="wrap_content"
@@ -68,5 +64,4 @@
             android:contentDescription="@string/arrow_forward"
             android:src="@drawable/arrow_forward" />
     </LinearLayout>
-
 </LinearLayout>
