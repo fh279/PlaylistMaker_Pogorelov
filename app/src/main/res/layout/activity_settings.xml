@@ -2,11 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/Theme.PlaylistMaker"
+    style="@style/MainAndSettingsScreenCommonAttributes"
     android:fitsSystemWindows="true"
     android:id="@+id/settingsScreen"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".SettingsActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -56,7 +55,7 @@
         <TextView
             style="@style/SettingsItemText"
             android:text="@string/user_argeement"
-            android:textSize="16sp" />
+            android:textSize="@dimen/item_text_size_common" />
         <ImageView
             style="@style/SettingsItemIcon"
             android:layout_width="wrap_content"

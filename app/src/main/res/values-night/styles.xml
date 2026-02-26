@@ -30,7 +30,6 @@
         <item name="iconTint">?attr/colorOnSurface</item>
     </style>
 
-    <!-- Стиль для контейнера пункта настроек -->
     <style name="SettingsItemContainer">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/settings_screen_item_height</item>
@@ -40,17 +39,15 @@
         <item name="android:paddingEnd">16dp</item>
     </style>
 
-    <!-- Стиль для текста в пункте настроек -->
     <style name="SettingsItemText">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/settings_screen_item_text_size</item>
+        <item name="android:textSize">@dimen/item_text_size_common</item>
         <item name="android:layout_weight">1</item>
         <item name="android:font">@font/ys_display_regular</item>
         <item name="android:textColor">?attr/colorSurface</item>
     </style>
 
-    <!-- Стиль для иконки в пункте настроек -->
     <style name="SettingsItemIcon">
         <item name="android:layout_width">24dp</item>
         <item name="android:layout_height">24dp</item>
@@ -58,7 +55,6 @@
         <item name="android:backgroundTint">?attr/colorOnSurfaceVariant</item>
     </style>
 
-    <!-- Стиль для тулбара экрана настроек -->
     <style name="SettingsToolbar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">56dp</item>
@@ -67,7 +63,6 @@
         <item name="font">@font/ys_display_medium</item>
     </style>
 
-    <!-- Стиль для тулбара экрана настроек -->
     <style name="SearchToolbar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">56dp</item>
@@ -83,7 +78,6 @@
         <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>
 
-    <!-- Стиль для переключателя -->
     <style name="SettingsSwitch">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

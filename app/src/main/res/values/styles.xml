@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-<style name="MainScreenToolbarTitleStyle">
+<style name="MainAndSettingsScreenCommonAttributes">
+    <item name="android:orientation">vertical</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+
+</style>
+
+    <style name="MainScreenToolbarTitleStyle">
     <item name="android:fontFamily">@font/ys_display_bold</item>
     <item name="android:textSize">@dimen/toolbar_title_text_size</item>
     <item name="android:layout_width">match_parent</item>
@@ -15,7 +22,7 @@
         <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
 
-    <style name="MainScreenButtonsStyle">
+    <style name="MainScreenButtonsStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
@@ -42,11 +49,10 @@
     <style name="SettingsItemText">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/settings_screen_item_text_size</item>
+        <item name="android:textSize">@dimen/item_text_size_common</item>
         <item name="android:layout_weight">1</item>
         <item name="android:font">@font/ys_display_regular</item>
-        <item name="android:textColor">?attr/colorSurface
-        </item> <!--цвет текста должен быть белый!-->
+        <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
 
     <style name="SettingsItemIcon">parent = ""
@@ -75,7 +81,7 @@
         <item name="android:fontFamily">@font/ys_display_bold</item>
         <item name="android:textSize">@dimen/toolbar_title_text_size</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:backgroundTint">?attr/colorPrimary</item>
+        <item name="android:backgroundTint">?attr/colorOnSurface</item>
         <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
 

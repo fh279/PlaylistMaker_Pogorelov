@@ -20,38 +20,38 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingHorizontal="16dp"
+            android:paddingHorizontal="@dimen/item_margin_start"
             android:paddingVertical="8dp">
             <EditText
                 android:id="@+id/searchEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="16dp"
+                android:paddingHorizontal="@dimen/item_margin_start"
                 android:paddingVertical="8dp"
                 android:hint="@string/search_text"
                 android:textColorHint="@color/colorOnSurface"
-                android:textColor="#333333"
+                android:textColor="?attr/colorOnSurface"
                 android:textSize="16sp"
                 android:background="@drawable/edittext_background"
                 android:drawableStart="@drawable/magnifier_icon"
                 android:drawablePadding="8dp"
-                android:drawableTint="#AEAFB4"
-                android:paddingStart="16dp"
+                android:drawableTint="?attr/colorOnSurfaceVariant"
+                android:paddingStart="@dimen/item_margin_start"
                 android:paddingEnd="48dp"
-                android:paddingTop="16dp"
-                android:paddingBottom="16dp"
+                android:paddingTop="@dimen/item_margin_start"
+                android:paddingBottom="@dimen/item_margin_start"
                 android:inputType="text"
                 android:maxLines="1" />
 
             <ImageButton
                 android:id="@+id/clearButton"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
+                android:layout_width="@dimen/image_button_size"
+                android:layout_height="@dimen/image_button_size"
                 android:src="@drawable/clear"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/button_clear"
                 android:layout_gravity="end|center_vertical"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="@dimen/item_margin_start"
                 android:visibility="gone" />
         </FrameLayout>
 </LinearLayout>
