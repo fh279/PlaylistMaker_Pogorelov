@@ -45,7 +45,8 @@
         <item name="android:textSize">@dimen/settings_screen_item_text_size</item>
         <item name="android:layout_weight">1</item>
         <item name="android:font">@font/ys_display_regular</item>
-        <item name="android:textColor">?attr/colorSurface</item> <!--цвет текста должен быть белый!-->
+        <item name="android:textColor">?attr/colorSurface
+        </item> <!--цвет текста должен быть белый!-->
     </style>
 
     <style name="SettingsItemIcon">parent = ""
