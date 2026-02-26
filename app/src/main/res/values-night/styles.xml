@@ -67,6 +67,22 @@
         <item name="font">@font/ys_display_medium</item>
     </style>
 
+    <!-- Стиль для тулбара экрана настроек -->
+    <style name="SearchToolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="titleTextAppearance">@style/SearchScreenToolbarTitleStyle</item>
+        <item name="font">@font/ys_display_medium</item>
+    </style>
+
+    <style name="SearchScreenToolbarTitleStyle">
+        <item name="android:fontFamily">@font/ys_display_bold</item>
+        <item name="android:textSize">@dimen/toolbar_title_text_size</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:backgroundTint">?attr/colorPrimary</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
     <!-- Стиль для переключателя -->
     <style name="SettingsSwitch">
         <item name="android:layout_width">wrap_content</item>

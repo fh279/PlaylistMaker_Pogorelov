@@ -41,6 +41,7 @@
             android:exported="false" />
         <activity
             android:name="com.example.playlistMaker.SearchActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Base.Theme.PlaylistMaker"/>
     </application>
 </manifest>

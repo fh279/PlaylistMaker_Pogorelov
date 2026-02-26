@@ -1,12 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.appbar.MaterialToolbar xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:fitsSystemWindows="true"
-    android:id="@+id/media_library"
+    android:id="@+id/search_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    app:title="@string/search_screen_blank_text"
-    tools:context=".MediaLibraryActivity">
-</com.google.android.material.appbar.MaterialToolbar>
+    tools:context=".SearchActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        style="@style/SearchToolbar"
+        android:id="@+id/search_screen_toolbar"
+        app:title="@string/search_text"
+        app:navigationIcon="?attr/homeAsUpIndicator" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+
+        android:id="@+id/search_edit_text_container">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/searchEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:hint="@string/search_text"
+                android:textColorHint="@color/colorOnSurface"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:background="@drawable/edittext_background"
+                android:drawableStart="@drawable/magnifier_icon"
+                android:drawablePadding="8dp"
+                android:drawableTint="#AEAFB4"
+                android:paddingStart="16dp"
+                android:paddingEnd="48dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:inputType="text"
+                android:maxLines="1" />
+
+            <ImageButton
+                android:id="@+id/clearButton"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/clear"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/button_clear"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="16dp"
+                android:visibility="gone" />
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

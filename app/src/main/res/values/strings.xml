@@ -23,5 +23,6 @@
     <string name="email_recipient_text" translatable="false">fh279@yandex.ru</string>
     <string name="email_subject_text">\"Сообщение разработчикам и разработчицам приложения Playlist Maker\"</string>
     <string name="email_bode_text">Спасибо разработчикам и разработчицам за крнутое приложение!</string>
+    <string name="button_clear">button_clear</string>
 
 </resources>
