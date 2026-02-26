@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        // enableEdgeToEdge() - отключил, потому что иначе кнопки прилипают к краям. Как-то это можно было обработать, но не помню как именно, надо гуглить.
+        enableEdgeToEdge()
 
         val searchButton = findViewById<Button>(R.id.main_screen_search_button)
         val mediaButton = findViewById<Button>(R.id.main_screen_media_button)
