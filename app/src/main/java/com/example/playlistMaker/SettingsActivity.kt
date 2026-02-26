@@ -42,7 +42,7 @@ class SettingsActivity : AppCompatActivity() {
         val btnSupport = findViewById<LinearLayout>(R.id.btnWriteToSupport)
         val recipient = this.getString(R.string.email_recipient_text)
         val subject = this.getString(R.string.email_subject_text)
-        val body = this.getString(R.string.email_bode_text)
+        val body = this.getString(R.string.email_body_text)
         val encodedSubject = Uri.encode(subject)
         val encodedBody = Uri.encode(body)
         val uriString = "mailto:$recipient?subject=$encodedSubject&body=$encodedBody"
@@ -55,7 +55,7 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun setUpUserAgreementButton() {
         val btnUserAgreement = findViewById<LinearLayout>(R.id.btnUserAgreement)
-        val link = "https://yandex.ru/legal/practicum_offer/ru/"
+        val link = this.getString(R.string.user_agreement_link)
         btnUserAgreement.setOnClickListener {
             openUserAgreement(link.toUri())
         }

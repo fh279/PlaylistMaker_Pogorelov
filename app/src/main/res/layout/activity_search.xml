@@ -22,7 +22,6 @@
         android:gravity="center_vertical"
         android:paddingHorizontal="16dp"
         android:paddingVertical="8dp"
-
         android:id="@+id/search_edit_text_container">
 
         <FrameLayout
@@ -30,7 +29,6 @@
             android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/searchEditText"
-                android:contentDescription="editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="16dp"
