@@ -2,6 +2,7 @@ package com.example.playlistMaker
 
 import android.graphics.Rect
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -14,10 +15,13 @@ import com.google.android.material.appbar.MaterialToolbar
 
 class SearchActivity : AppCompatActivity() {
     private var editTextValue = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
         enableEdgeToEdge()
+
+        Log.i("LIFECYCLE", "onCreate called, savedInstanceState = ${savedInstanceState != null}")
 
         val toolbar = findViewById<MaterialToolbar>(R.id.search_screen_toolbar)
         toolbar.setNavigationOnClickListener { finish() }
@@ -25,19 +29,35 @@ class SearchActivity : AppCompatActivity() {
         val clearButton = findViewById<ImageButton>(R.id.clearButton)
         val searchEditText = findViewById<EditText>(R.id.searchEditText)
 
-        searchEditText?.addTextChangedListener(
-            beforeTextChanged = { s, _, _, _ -> /*stub*/ },
-            onTextChanged = {s, second, third, function ->
-                editTextValue = s.toString()
-                clearButton.visibility = if (s.isNullOrEmpty()) View.GONE else View.VISIBLE
+        // Restore editTextValue value from savedInstanceState(), if present
+        if (savedInstanceState != null) {
+            editTextValue = savedInstanceState.getString(contentKey, "")
+            Log.i("RESTORE", "Restored editTextValue from savedInstanceState: '$editTextValue'")
+            // set restored editTextValue value in EditText
+            searchEditText?.setText(editTextValue)
+            searchEditText?.setSelection(editTextValue.length)
+        }
 
+        searchEditText?.addTextChangedListener(
+            beforeTextChanged = { s, _, _, _ ->
+                // stub
+                Log.d("TEXT_CHANGE", "beforeTextChanged: '$s'")
             },
-            afterTextChanged = { _ -> /* stub */}
+            onTextChanged = { s, _, _, _ ->
+                editTextValue = s.toString()
+                Log.d("TEXT_CHANGE", "onTextChanged -> editTextValue updated to: '$editTextValue'")
+                clearButton.visibility = if (s.isNullOrEmpty()) View.GONE else View.VISIBLE
+            },
+            afterTextChanged = { _ ->
+                // stub
+                Log.d("TEXT_CHANGE", "afterTextChanged, current editTextValue: '$editTextValue'")
+            }
         )
 
         clearButton.setOnClickListener {
             searchEditText?.text?.clear()
             editTextValue = ""
+            Log.i("CLEAR", "editTextValue cleared, now: '$editTextValue'")
             searchEditText?.clearFocus()
             hideKeyboard(searchEditText as View)
         }
@@ -70,11 +90,16 @@ class SearchActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putString(contentKey, editTextValue)
+        Log.i("SAVE", "onSaveInstanceState called, saving editTextValue: '$editTextValue'")
     }
 
     // Restore state after Activity is created
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
+        // Get editText value from the Bundle (nor from the class field)
+        val restoredValue = savedInstanceState.getString(contentKey, "")
+        editTextValue = restoredValue
+        Log.i("RESTORE", "onRestoreInstanceState called, restored editTextValue: '$restoredValue'")
     }
 
     companion object editTextContent {
