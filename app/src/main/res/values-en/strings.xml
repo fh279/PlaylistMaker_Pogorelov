@@ -15,4 +15,10 @@
     <string name="user_argeement">User agreement</string>
     <string name="search_screen_blank_text">This is a blank for Search screen</string>
     <string name="media_library_blank_text">This is a blank for Media Library screen</string>
+    <string name="activity_not_found_toast_text">Activity not found</string>
+    <string name="no_app_to_sent_email_toast_text">There is no app to send e-mail</string>
+    <string name="no_app_to_open_page_toast_text">There is no app to open the page</string>
+    <string name="cant_open_the_page_toast_text">Can\'t open the link</string>
+    <string name="email_subject_text">"Thaks to Playlist Maker app developers! "</string>
+    <string name="email_bode_text">Thanks to developers for the awesome app!</string>
 </resources>

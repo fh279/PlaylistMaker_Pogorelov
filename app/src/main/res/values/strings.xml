@@ -15,5 +15,13 @@
     <string name="user_argeement">Пользовательское соглашение</string>
     <string name="arrow_forward" translatable="false">arrow_forward</string>
     <string name="search_screen_blank_text">Это заготовка экрана поиска</string>
-    <string name="media_library_blank_text">Это заготовка экрана Медиа Библиотеки</string>
+    <string name="activity_not_found_toast_text">Активити не найдена</string>
+    <string name="no_app_to_sent_email_toast_text">Нет приложения что бы отправить e-mail</string>
+    <string name="no_app_to_open_page_toast_text">Нет приложения для открытия страницы</string>
+    <string name="media_library_blank_text">Заготовка экрана Медиа Библиотеки</string>
+    <string name="cant_open_the_page_toast_text">Невозможно открыть страницу</string>
+    <string name="email_recipient_text" translatable="false">fh279@yandex.ru</string>
+    <string name="email_subject_text">\"Сообщение разработчикам и разработчицам приложения Playlist Maker\"</string>
+    <string name="email_bode_text">Спасибо разработчикам и разработчицам за крнутое приложение!</string>
+
 </resources>
