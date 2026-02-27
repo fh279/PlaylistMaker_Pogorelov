@@ -9,11 +9,11 @@
 </style>
 
     <style name="MainScreenToolbarTitleStyle">
-    <item name="android:fontFamily">@font/ys_display_bold</item>
+    <item name="android:fontFamily">@font/ys_display_medium</item>
     <item name="android:textSize">@dimen/toolbar_title_text_size</item>
     <item name="android:layout_width">match_parent</item>
     <item name="android:backgroundTint">?attr/colorPrimary</item>
-    <item name="android:textColor">?attr/colorOnSurface</item>
+    <item name="titleTextColor">?attr/colorOnPrimary</item>
 </style>
 
     <style name="SettingsScreenToolbarTitleStyle">
