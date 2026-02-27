@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import com.google.android.material.appbar.MaterialToolbar
 
@@ -46,7 +47,7 @@ class SearchActivity : AppCompatActivity() {
             onTextChanged = { s, _, _, _ ->
                 editTextValue = s.toString()
                 Log.d("TEXT_CHANGE", "onTextChanged -> editTextValue updated to: '$editTextValue'")
-                clearButton.visibility = if (s.isNullOrEmpty()) View.GONE else View.VISIBLE
+                clearButton.isVisible = if (s.isNullOrEmpty()) false else true
             },
             afterTextChanged = { _ ->
                 // stub

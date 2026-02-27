@@ -20,6 +20,8 @@
 
     <Button
         style="@style/MainScreenButtonsStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/main_screen_search_button"
         android:layout_marginTop="28dp"
         android:text="@string/search_text"
@@ -28,6 +30,8 @@
 
     <Button
         style="@style/MainScreenButtonsStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/main_screen_media_button"
         android:drawableStart="@drawable/magnifier_icon"
         android:text="@string/media_string"
@@ -36,6 +40,8 @@
 
     <Button
         style="@style/MainScreenButtonsStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/main_screen_settings_button"
         android:drawableStart="@drawable/magnifier_icon"
         android:text="@string/settings_title"

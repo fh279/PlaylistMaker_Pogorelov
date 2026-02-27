@@ -23,8 +23,6 @@
     </style>
 
     <style name="MainScreenButtonsStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
         <item name="android:backgroundTint">?attr/colorOnPrimary</item>
         <item name="cornerRadius">16dp</item>

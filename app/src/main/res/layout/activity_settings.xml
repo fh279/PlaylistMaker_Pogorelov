@@ -16,9 +16,13 @@
 
     <LinearLayout
         style="@style/SettingsItemContainer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/settings_screen_item_height"
         android:id="@+id/btnThemeSwitcher">
         <TextView
             style="@style/SettingsItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/dark_theme_text" />
         <Switch
             style="@style/SettingsSwitch"
@@ -27,9 +31,13 @@
 
     <LinearLayout
         style="@style/SettingsItemContainer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/settings_screen_item_height"
         android:id="@+id/btnShareApp">
         <TextView
             style="@style/SettingsItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/share_app_text" />
         <ImageView
             style="@style/SettingsItemIcon"
@@ -39,9 +47,13 @@
 
     <LinearLayout
         style="@style/SettingsItemContainer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/settings_screen_item_height"
         android:id="@+id/btnWriteToSupport">
         <TextView
             style="@style/SettingsItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/support_text" />
         <ImageView
             style="@style/SettingsItemIcon"
@@ -51,9 +63,13 @@
 
     <LinearLayout
         style="@style/SettingsItemContainer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/settings_screen_item_height"
         android:id="@+id/btnUserAgreement">
         <TextView
             style="@style/SettingsItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/user_argeement"
             android:textSize="@dimen/item_text_size_common" />
         <ImageView
