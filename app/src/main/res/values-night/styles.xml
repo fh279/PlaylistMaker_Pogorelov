@@ -1,28 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-<style name="MainAndSettingsScreenCommonAttributes">
-    <item name="android:orientation">vertical</item>
-    <item name="android:layout_width">match_parent</item>
-    <item name="android:layout_height">match_parent</item>
-
-</style>
-
     <style name="MainScreenToolbarTitleStyle">
-    <item name="android:fontFamily">@font/ys_display_medium</item>
-    <item name="android:textSize">@dimen/toolbar_title_text_size</item>
-    <item name="android:layout_width">match_parent</item>
-    <item name="android:backgroundTint">?attr/colorPrimary</item>
-    <item name="titleTextColor">?attr/colorOnPrimary</item>
-</style>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:textSize">@dimen/toolbar_title_text_size</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:backgroundTint">?attr/colorPrimary</item>
+        <item name="titleTextColor">?attr/colorOnPrimary</item>
+    </style>
 
     <style name="SettingsScreenToolbarTitleStyle">
         <item name="android:fontFamily">@font/ys_display_bold</item>
         <item name="android:textSize">@dimen/toolbar_title_text_size</item>
-        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>
 
-    <style name="MainScreenButtonsStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+    <style name="MainScreenButtonsStyle">
         <item name="android:layout_weight">1</item>
         <item name="android:backgroundTint">?attr/colorOnPrimary</item>
         <item name="cornerRadius">16dp</item>
@@ -36,8 +29,6 @@
     </style>
 
     <style name="SettingsItemContainer">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/settings_screen_item_height</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:paddingStart">16dp</item>
@@ -45,15 +36,13 @@
     </style>
 
     <style name="SettingsItemText">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/item_text_size_common</item>
         <item name="android:layout_weight">1</item>
         <item name="android:font">@font/ys_display_regular</item>
-        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textColor">?attr/colorSurface</item>
     </style>
 
-    <style name="SettingsItemIcon">parent = ""
+    <style name="SettingsItemIcon">
         <item name="android:layout_width">24dp</item>
         <item name="android:layout_height">24dp</item>
         <item name="android:layout_marginEnd">12dp</item>
@@ -79,13 +68,11 @@
         <item name="android:fontFamily">@font/ys_display_bold</item>
         <item name="android:textSize">@dimen/toolbar_title_text_size</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:backgroundTint">?attr/colorOnSurface</item>
-        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:backgroundTint">?attr/colorPrimary</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>
 
     <style name="SettingsSwitch">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginEnd">10dp</item>
     </style>
 </resources>

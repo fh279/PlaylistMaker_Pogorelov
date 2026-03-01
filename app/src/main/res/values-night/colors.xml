@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3772E7</color> <!--синий-->
+    <color name="colorPrimary">#1A1B22</color> <!--черный-->
     <color name="colorOnPrimary">#FFFFFF</color> <!--белый-->
-    <color name="colorSurface">#3772E7</color> <!--синий-->
+    <color name="colorSurface">#FFFFFF</color> <!--белый-->
     <color name="colorOnSurface">#1A1B22</color> <!--черный-->
     <color name="colorOnSurfaceVariant">#AEAFB4</color> <!--серый-->
 </resources>

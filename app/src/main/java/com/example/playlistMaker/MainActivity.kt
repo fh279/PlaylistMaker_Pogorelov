@@ -10,7 +10,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        enableEdgeToEdge()
 
         val searchButton = findViewById<Button>(R.id.main_screen_search_button)
         val mediaButton = findViewById<Button>(R.id.main_screen_media_button)

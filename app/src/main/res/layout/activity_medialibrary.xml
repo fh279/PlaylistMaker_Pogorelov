@@ -2,6 +2,7 @@
 <com.google.android.material.appbar.MaterialToolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:theme="@style/Theme.PlaylistMaker"
     android:fitsSystemWindows="true"
     android:id="@+id/media_library"
     android:layout_width="match_parent"

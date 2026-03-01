@@ -2,119 +2,83 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/Theme.PlaylistMaker"
+    style="@style/MainAndSettingsScreenCommonAttributes"
     android:fitsSystemWindows="true"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:id="@+id/settingsScreen"
+    tools:context=".SettingsActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
+        style="@style/SettingsToolbar"
         android:id="@+id/settings_screen_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_marginBottom="24dp"
-        app:titleTextAppearance="@style/SettingsScreenToolbarTitleStyle"
         app:title="@string/settings_title"
-        app:navigationIcon="?attr/homeAsUpIndicator">
-    </com.google.android.material.appbar.MaterialToolbar>
+        app:navigationIcon="?attr/homeAsUpIndicator" />
 
     <LinearLayout
+        style="@style/SettingsItemContainer"
         android:layout_width="match_parent"
         android:layout_height="@dimen/settings_screen_item_height"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginStart="16dp">
-
+        android:id="@+id/btnThemeSwitcher">
         <TextView
-            android:layout_width="0sp"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:text="@string/dark_theme_text"
-            android:textSize="@dimen/settings_screen_item_text_size"
-            android:layout_weight="1">
-        </TextView>
-
-        <Switch
+            style="@style/SettingsItemText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            tools:ignore="UseSwitchCompatOrMaterialXml">
-        </Switch>
+            android:text="@string/dark_theme_text" />
+        <Switch
+            style="@style/SettingsSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
     </LinearLayout>
 
     <LinearLayout
+        style="@style/SettingsItemContainer"
         android:layout_width="match_parent"
         android:layout_height="@dimen/settings_screen_item_height"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginStart="16dp">
-
+        android:id="@+id/btnShareApp">
         <TextView
-            android:layout_width="0sp"
+            style="@style/SettingsItemText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/share_app_text"
-            android:textSize="@dimen/settings_screen_item_text_size"
-            android:layout_weight="1">
-        </TextView>
-
+            android:text="@string/share_app_text" />
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="12dp"
+            style="@style/SettingsItemIcon"
             android:contentDescription="@string/share_app_icon"
-            android:src="@drawable/baseline_share_24"
-            android:backgroundTint="@color/white">
-        </ImageView>
+            android:src="@drawable/baseline_share_24" />
     </LinearLayout>
 
     <LinearLayout
+        style="@style/SettingsItemContainer"
         android:layout_width="match_parent"
         android:layout_height="@dimen/settings_screen_item_height"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginStart="16dp">
+        android:id="@+id/btnWriteToSupport">
         <TextView
-            android:layout_width="0sp"
+            style="@style/SettingsItemText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/support_text"
-            android:textSize="@dimen/settings_screen_item_text_size"
-            android:layout_weight="1">
-
-        </TextView>
-
+            android:text="@string/support_text" />
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="12dp"
+            style="@style/SettingsItemIcon"
             android:contentDescription="@string/support_icon"
-            android:src="@drawable/support"
-            android:backgroundTint="@color/white">
-        </ImageView>
+            android:src="@drawable/support" />
     </LinearLayout>
 
     <LinearLayout
+        style="@style/SettingsItemContainer"
         android:layout_width="match_parent"
         android:layout_height="@dimen/settings_screen_item_height"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginStart="16dp">
+        android:id="@+id/btnUserAgreement">
         <TextView
-            android:layout_width="0sp"
+            style="@style/SettingsItemText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/user_argeement"
-            android:textSize="16sp"
-            android:layout_weight="1">
-        </TextView>
-
+            android:textSize="@dimen/item_text_size_common" />
         <ImageView
+            style="@style/SettingsItemIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
             android:contentDescription="@string/arrow_forward"
-            android:src="@drawable/arrow_forward"
-            android:backgroundTint="@color/white">
-        </ImageView>
+            android:src="@drawable/arrow_forward" />
     </LinearLayout>
 </LinearLayout>
-

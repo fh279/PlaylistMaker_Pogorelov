@@ -1,9 +1,18 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-
-    <style name="Base.Theme.PlaylistMaker" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Base.Theme.PlaylistMaker" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Фон экрана. Черный. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!-- Текст заголовка. Белый-->
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <!-- Фон кнопок. Белый -->
+        <item name="colorSurface">@color/colorSurface</item>
+        <!-- Текст кнопок (главный экран, но не настроек...-->
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <!-- Иконки элементов списка настроек. Серый. -->
+        <item name="colorOnSurfaceVariant">@color/colorOnSurfaceVariant</item>
     </style>
 
-    <style name="Base.Theme.MaterialComponents.DayNight.NoActionBar"
-        parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
     </style>
 </resources>
