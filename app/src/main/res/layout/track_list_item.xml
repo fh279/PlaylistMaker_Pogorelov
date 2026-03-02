@@ -41,7 +41,6 @@
                 android:textSize="11sp">
             </TextView>
         </LinearLayout>
-
         <ImageView
             style="@style/ItemIcon"
             android:layout_width="wrap_content"
