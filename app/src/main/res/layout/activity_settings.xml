@@ -44,7 +44,8 @@
         <ImageView
             style="@style/ItemIcon"
             android:contentDescription="@string/share_app_icon"
-            android:src="@drawable/baseline_share_24" />
+            android:src="@drawable/share_icon"
+            />
     </LinearLayout>
 
     <LinearLayout

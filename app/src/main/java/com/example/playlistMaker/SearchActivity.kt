@@ -3,15 +3,24 @@ package com.example.playlistMaker
 import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.playlistMaker.mediaLibraryClasses.MockedTracks
+import com.example.playlistMaker.mediaLibraryClasses.Track
 import com.google.android.material.appbar.MaterialToolbar
 
 class SearchActivity : AppCompatActivity() {
@@ -30,9 +39,21 @@ class SearchActivity : AppCompatActivity() {
         val clearButton = findViewById<ImageButton>(R.id.clearButton)
         val searchEditText = findViewById<EditText>(R.id.searchEditText)
 
+        val trackList = MockedTracks.listOfTracks
+        val trackListRecyclerView = findViewById<RecyclerView>(R.id.track_list_recycler_view)
+
+        trackListRecyclerView.layoutManager = LinearLayoutManager(
+            /*context = */ this,
+            /* orientation = */ RecyclerView.VERTICAL,
+            /* reverseLayout = */ false
+        )
+
+        val trackListAdapter = TrackListAdapter(trackList)
+        trackListRecyclerView.adapter = trackListAdapter
+
         // Restore editTextValue value from savedInstanceState(), if present
         if (savedInstanceState != null) {
-            editTextValue = savedInstanceState.getString(contentKey, "")
+            editTextValue = savedInstanceState.getString(CONTENT_KEY, "")
             Log.i("RESTORE", "Restored editTextValue from savedInstanceState: '$editTextValue'")
             // set restored editTextValue value in EditText
             searchEditText?.setText(editTextValue)
@@ -47,7 +68,7 @@ class SearchActivity : AppCompatActivity() {
             onTextChanged = { s, _, _, _ ->
                 editTextValue = s.toString()
                 Log.d("TEXT_CHANGE", "onTextChanged -> editTextValue updated to: '$editTextValue'")
-                clearButton.isVisible = if (s.isNullOrEmpty()) false else true
+                clearButton.isVisible = !s.isNullOrEmpty()
             },
             afterTextChanged = { _ ->
                 // stub
@@ -87,10 +108,9 @@ class SearchActivity : AppCompatActivity() {
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
-    // Save state before killing Activity
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putString(contentKey, editTextValue)
+        outState.putString(CONTENT_KEY, editTextValue)
         Log.i("SAVE", "onSaveInstanceState called, saving editTextValue: '$editTextValue'")
     }
 
@@ -98,12 +118,56 @@ class SearchActivity : AppCompatActivity() {
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         // Get editText value from the Bundle (nor from the class field)
-        val restoredValue = savedInstanceState.getString(contentKey, "")
+        val restoredValue = savedInstanceState.getString(CONTENT_KEY, "")
         editTextValue = restoredValue
         Log.i("RESTORE", "onRestoreInstanceState called, restored editTextValue: '$restoredValue'")
     }
 
-    companion object editTextContent {
-        const val contentKey: String = "TEXT_FIELD_CONTENT"
+    companion object EditTextContent {
+        const val CONTENT_KEY: String = "TEXT_FIELD_CONTENT"
     }
 }
+
+class TrackListAdapter(
+    private val trackList: List<Track>
+) : RecyclerView.Adapter<TrackListAdapter.TrackListViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrackListViewHolder {
+        val view =
+            LayoutInflater.from(parent.context)
+                .inflate(
+                    /* resource = */ R.layout.track_list_item,
+                    /* root = */ parent,
+                    /* attachToRoot = */ false
+                )
+        return TrackListViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: TrackListViewHolder, position: Int) {
+        holder.bind(model = trackList[position])
+    }
+
+    override fun getItemCount(): Int {
+        return trackList.size
+    }
+
+    class TrackListViewHolder(tracklistItemView: View) :
+        RecyclerView.ViewHolder(tracklistItemView) {
+        val albumCover = tracklistItemView.findViewById<ImageView>(R.id.album_cover)
+        val songTitle = tracklistItemView.findViewById<TextView>(R.id.song_title)
+        val artistAndTime = tracklistItemView.findViewById<TextView>(R.id.song_artist_and_time)
+        val btnForward = tracklistItemView.findViewById<ImageView>(R.id.item_icon_forward)
+
+        fun bind(model: Track) {
+            songTitle.text = model.trackName
+            "${model.artistName} • ${model.trackTime}".also { artistAndTime.text = it }
+            Glide
+                .with(itemView)
+                .load(model.artworkUrl100)
+                .placeholder(R.drawable.placeholder)
+                .error(R.drawable.placeholder)
+                .centerCrop()
+                .into(albumCover)
+        }
+    }
+}
+

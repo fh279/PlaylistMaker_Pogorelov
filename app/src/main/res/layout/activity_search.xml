@@ -13,7 +13,9 @@
         style="@style/SearchToolbar"
         android:id="@+id/search_screen_toolbar"
         app:title="@string/search_text"
-        app:navigationIcon="?attr/homeAsUpIndicator" />
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        />
+
         <FrameLayout
             android:layout_width="match_parent"
             android:id="@+id/search_edit_text_container"
@@ -23,19 +25,18 @@
             android:paddingHorizontal="@dimen/item_margin_start"
             android:paddingVertical="8dp">
             <EditText
+                style="@style/SearchBarColors"
                 android:id="@+id/searchEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="@dimen/item_margin_start"
                 android:paddingVertical="8dp"
                 android:hint="@string/search_text"
-                android:textColorHint="@color/colorOnSurface"
-                android:textColor="?attr/colorOnSurface"
                 android:textSize="16sp"
                 android:background="@drawable/edittext_background"
                 android:drawableStart="@drawable/magnifier_icon"
+                android:drawableTint="@color/searchBarIcons"
                 android:drawablePadding="8dp"
-                android:drawableTint="?attr/colorOnSurfaceVariant"
                 android:paddingStart="@dimen/item_margin_start"
                 android:paddingEnd="48dp"
                 android:paddingTop="@dimen/item_margin_start"
@@ -52,6 +53,15 @@
                 android:contentDescription="@string/button_clear"
                 android:layout_gravity="end|center_vertical"
                 android:layout_marginEnd="@dimen/item_margin_start"
+                app:tint="@color/searchBarIcons"
                 android:visibility="gone" />
         </FrameLayout>
+
+    <view class="androidx.recyclerview.widget.RecyclerView"
+        android:id="@+id/track_list_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:background="@color/recyclerViewBackgroundColor">
+    </view>
 </LinearLayout>

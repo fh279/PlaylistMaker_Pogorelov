@@ -6,11 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <view class="androidx.appcompat.app.AlertController$RecycleListView"
+    <view class="androidx.recyclerview.widget.RecyclerView"
         android:id="@+id/track_list_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
     </view>
 
 

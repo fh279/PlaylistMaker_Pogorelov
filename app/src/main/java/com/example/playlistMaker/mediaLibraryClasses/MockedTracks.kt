@@ -1,7 +1,7 @@
 package com.example.playlistMaker.mediaLibraryClasses
 
 object MockedTracks {
-    val listOfTracks = listOf<Track>(
+    val listOfTracks = listOf(
         Track(
             trackName = "Smells Like Teen Spirit",
             artistName = "Nirvana",
