@@ -18,7 +18,10 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_marginStart="13dp"
+            android:layout_gravity="center_vertical"
             app:cardCornerRadius="2dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardElevation="0dp"
             app:cardUseCompatPadding="false">
 
             <ImageView

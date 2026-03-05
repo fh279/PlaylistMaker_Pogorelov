@@ -6,7 +6,8 @@
     style="@style/MainAndSettingsScreenCommonAttributes"
     android:fitsSystemWindows="true"
     android:id="@+id/settingsScreen"
-    tools:context=".SettingsActivity">
+    tools:context=".SettingsActivity"
+    android:background="@color/recyclerViewBackgroundColor">
 
     <com.google.android.material.appbar.MaterialToolbar
         style="@style/SettingsToolbar"
