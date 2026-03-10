@@ -21,4 +21,7 @@
     <string name="cant_open_the_page_toast_text">Can\'t open the link</string>
     <string name="email_subject_text">"Thaks to Playlist Maker app developers! "</string>
     <string name="email_body_text">Thanks to developers for the awesome app!</string>
+    <string name="nothing_found_text">Nothing found</string>
+    <string name="network_issues_text">Problems with network\n\nLoading failed. Check internet connection</string>
+    <string name="refresh_button_text">Refresh</string>
 </resources>

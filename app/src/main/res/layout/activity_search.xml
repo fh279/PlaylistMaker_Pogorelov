@@ -17,47 +17,87 @@
         app:navigationIcon="?attr/homeAsUpIndicator"
         />
 
-        <FrameLayout
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:id="@+id/search_edit_text_container"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/item_margin_start"
+        android:paddingVertical="8dp">
+        <EditText
+            style="@style/SearchBarColors"
+            android:id="@+id/searchEditText"
             android:layout_width="match_parent"
-            android:id="@+id/search_edit_text_container"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
             android:paddingHorizontal="@dimen/item_margin_start"
-            android:paddingVertical="8dp">
-            <EditText
-                style="@style/SearchBarColors"
-                android:id="@+id/searchEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="@dimen/item_margin_start"
-                android:paddingVertical="8dp"
-                android:hint="@string/search_text"
-                android:font="@font/ys_display_regular"
-                android:textSize="16sp"
-                android:background="@drawable/edittext_background"
-                android:drawableStart="@drawable/magnifier_icon"
-                android:drawableTint="@color/searchBarIcons"
-                android:drawablePadding="8dp"
-                android:paddingStart="@dimen/item_margin_start"
-                android:paddingEnd="48dp"
-                android:paddingTop="@dimen/item_margin_start"
-                android:paddingBottom="@dimen/item_margin_start"
-                android:inputType="text"
-                android:maxLines="1" />
+            android:paddingVertical="8dp"
+            android:hint="@string/search_text"
+            android:font="@font/ys_display_regular"
+            android:textSize="16sp"
+            android:background="@drawable/edittext_background"
+            android:drawableStart="@drawable/magnifier_icon"
+            android:drawableTint="@color/searchBarIcons"
+            android:drawablePadding="8dp"
+            android:paddingStart="@dimen/item_margin_start"
+            android:paddingEnd="48dp"
+            android:paddingTop="@dimen/item_margin_start"
+            android:paddingBottom="@dimen/item_margin_start"
+            android:inputType="text"
+            android:maxLines="1" />
 
-            <ImageButton
-                android:id="@+id/clearButton"
-                android:layout_width="@dimen/image_button_size"
-                android:layout_height="@dimen/image_button_size"
-                android:src="@drawable/clear"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="@string/button_clear"
-                android:layout_gravity="end|center_vertical"
-                android:layout_marginEnd="@dimen/item_margin_start"
-                app:tint="@color/searchBarIcons"
-                android:visibility="gone" />
-        </FrameLayout>
+        <ImageButton
+            android:id="@+id/clearButton"
+            android:layout_width="@dimen/image_button_size"
+            android:layout_height="@dimen/image_button_size"
+            android:src="@drawable/clear"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/button_clear"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="@dimen/item_margin_start"
+            app:tint="@color/searchBarIcons"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/placeholderContainer"
+        android:layout_marginTop="210dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/placeholderImage"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/nothing_found_icon"
+            android:contentDescription="@string/nothing_found_text"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/placeholderText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:textSize="19sp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/placeholderRefreshButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/refresh_button_text"
+            android:textColor="@color/recyclerViewBackgroundColor"
+            android:visibility="gone"
+            android:backgroundTint="@color/colorOnSurface"/>
+
+    </LinearLayout>
 
     <view class="androidx.recyclerview.widget.RecyclerView"
         android:id="@+id/track_list_recycler_view"
