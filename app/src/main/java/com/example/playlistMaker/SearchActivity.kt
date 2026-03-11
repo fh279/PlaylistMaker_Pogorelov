@@ -83,31 +83,14 @@ class SearchActivity : AppCompatActivity() {
         searchEditText.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 val query = searchEditText.text.toString().trim()
-                if (query.isNotEmpty()) {
-                    val call = SearchApi.iTunesSearchApi.search(query)
-                    call.enqueue(object : Callback<ITunesSearchResponse> {
-                        override fun onResponse(
-                            call: Call<ITunesSearchResponse>,
-                            response: Response<ITunesSearchResponse>
-                        ) {
-                            if (response.isSuccessful) {
-                                val searchResponse = response.body()
-                                searchResponse?.let {
-                                    trackListRecyclerView.adapter = TrackListAdapter(it.results)
-                                    updateUIWithResults(it.results)
-                                }
-                            } else {
-                                updatePlaceHolderState(isError = true, isEmpty = false)
-                            }
-                        }
-                        override fun onFailure(call: Call<ITunesSearchResponse>, t: Throwable) {
-                            updatePlaceHolderState(isError = true, isEmpty = false)
-                        }
-                    })
-                }
+                if (query.isNotEmpty()) performSearch(query)
                 true
             }
             false
+        }
+        placeholderRefreshButton.setOnClickListener {
+            val query = searchEditText.text.toString().trim()
+            if (query.isNotEmpty()) performSearch(query)
         }
         // 3. clearButton использует updatePlaceHolderState вместо прямого .visibility = GONE
         clearButton.setOnClickListener {
@@ -194,5 +177,27 @@ class SearchActivity : AppCompatActivity() {
     companion object EditTextContent {
         const val CONTENT_KEY: String = "TEXT_FIELD_CONTENT"
         const val PLACEHOLDER_STATE_KEY: String = "PLACEHOLDER_STATE"  // 6. Новый ключ
+    }
+    private fun performSearch(query: String) {
+        val call = SearchApi.iTunesSearchApi.search(query)
+        call.enqueue(object : Callback<ITunesSearchResponse> {
+            override fun onResponse(
+                call: Call<ITunesSearchResponse>,
+                response: Response<ITunesSearchResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val searchResponse = response.body()
+                    searchResponse?.let {
+                        trackListRecyclerView.adapter = TrackListAdapter(it.results)
+                        updateUIWithResults(it.results)
+                    }
+                } else {
+                    updatePlaceHolderState(isError = true, isEmpty = false)
+                }
+            }
+            override fun onFailure(call: Call<ITunesSearchResponse>, t: Throwable) {
+                updatePlaceHolderState(isError = true, isEmpty = false)
+            }
+        })
     }
 }
