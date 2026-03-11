@@ -9,5 +9,7 @@
     <dimen name="item_margin_start">16dp</dimen>
     <dimen name="image_button_size">16dp</dimen>
     <dimen name="item_text_size_common">16sp</dimen>
+    <dimen name="tracklist_song_title_text_size">13sp</dimen>
+    <dimen name="tracklist_artist_and_time_text_size">11sp</dimen>
 
 </resources>

@@ -5,4 +5,7 @@
     <color name="colorSurface">#3772E7</color> <!--синий-->
     <color name="colorOnSurface">#1A1B22</color> <!--черный-->
     <color name="colorOnSurfaceVariant">#AEAFB4</color> <!--серый-->
+    <color name="colorOnSurfaceInverse">#FFFFFF</color> <!--белый-->
+    <color name="searchBarIcons">#AEAFB4</color> <!--серый-->
+    <color name="recyclerViewBackgroundColor">#FFFFFF</color> <!--белый-->
 </resources>

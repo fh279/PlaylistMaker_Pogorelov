@@ -6,7 +6,8 @@
     style="@style/MainAndSettingsScreenCommonAttributes"
     android:fitsSystemWindows="true"
     android:id="@+id/settingsScreen"
-    tools:context=".SettingsActivity">
+    tools:context=".SettingsActivity"
+    android:background="@color/recyclerViewBackgroundColor">
 
     <com.google.android.material.appbar.MaterialToolbar
         style="@style/SettingsToolbar"
@@ -42,9 +43,10 @@
             android:layout_height="wrap_content"
             android:text="@string/share_app_text" />
         <ImageView
-            style="@style/SettingsItemIcon"
+            style="@style/ItemIcon"
             android:contentDescription="@string/share_app_icon"
-            android:src="@drawable/baseline_share_24" />
+            android:src="@drawable/share_icon"
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -58,7 +60,7 @@
             android:layout_height="wrap_content"
             android:text="@string/support_text" />
         <ImageView
-            style="@style/SettingsItemIcon"
+            style="@style/ItemIcon"
             android:contentDescription="@string/support_icon"
             android:src="@drawable/support" />
     </LinearLayout>
@@ -75,7 +77,7 @@
             android:text="@string/user_argeement"
             android:textSize="@dimen/item_text_size_common" />
         <ImageView
-            style="@style/SettingsItemIcon"
+            style="@style/ItemIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/arrow_forward"

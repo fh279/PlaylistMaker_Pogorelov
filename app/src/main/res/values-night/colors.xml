@@ -3,6 +3,9 @@
     <color name="colorPrimary">#1A1B22</color> <!--черный-->
     <color name="colorOnPrimary">#FFFFFF</color> <!--белый-->
     <color name="colorSurface">#FFFFFF</color> <!--белый-->
-    <color name="colorOnSurface">#1A1B22</color> <!--черный-->
-    <color name="colorOnSurfaceVariant">#AEAFB4</color> <!--серый-->
+    <color name="colorOnSurface">#FFFFFF</color> <!--черный-->
+    <color name="colorOnSurfaceVariant">#FFFFFF</color> <!--белый-->
+    <color name="colorOnSurfaceInverse">#FFFFFF</color> <!-- белый -->
+    <color name="searchBarIcons">#1A1B22</color> <!--черный-->
+    <color name="recyclerViewBackgroundColor">#1A1B22</color> <!--черный-->
 </resources>

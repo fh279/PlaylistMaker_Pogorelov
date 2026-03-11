@@ -53,11 +53,12 @@
         <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
 
-    <style name="SettingsItemIcon">parent = ""
+    <style name="ItemIcon">
         <item name="android:layout_width">24dp</item>
         <item name="android:layout_height">24dp</item>
         <item name="android:layout_marginEnd">12dp</item>
         <item name="android:backgroundTint">?attr/colorOnSurfaceVariant</item>
+        <item name="tint">@color/colorOnSurfaceVariant</item>
     </style>
 
     <style name="SettingsToolbar">
@@ -88,4 +89,10 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginEnd">10dp</item>
     </style>
+
+    <style name="TrackListTextAttributes">
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:font">@font/ys_display_regular</item>
+    </style>style>
 </resources>
