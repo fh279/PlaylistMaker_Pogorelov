@@ -11,7 +11,6 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -25,12 +24,12 @@ import com.google.android.material.appbar.MaterialToolbar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 class SearchActivity : AppCompatActivity() {
     // 1. Добавлены enum и поле состояния плейсхолдера
     private enum class PlaceholderState { NONE, NOTHING_FOUND, ERROR }
     private var currentPlaceholderState = PlaceholderState.NONE
     private var editTextValue = ""
-    val iTunesBaseStringUrl: String = "https://itunes.apple.com"
     private lateinit var toolbar: MaterialToolbar
     private lateinit var clearButton: ImageButton
     private lateinit var searchEditText: EditText
@@ -72,13 +71,14 @@ class SearchActivity : AppCompatActivity() {
                 PlaceholderState.NONE -> Unit
             }
         }
+
         searchEditText.addTextChangedListener(
-            beforeTextChanged = { s, _, _, _ -> },
+            beforeTextChanged = { s, _, _, _ -> /* Stub */ },
             onTextChanged = { s, _, _, _ ->
                 editTextValue = s.toString()
                 clearButton.isVisible = !s.isNullOrEmpty()
             },
-            afterTextChanged = { _ -> }
+            afterTextChanged = { _ -> /* Stub */ }
         )
         searchEditText.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -92,13 +92,15 @@ class SearchActivity : AppCompatActivity() {
             val query = searchEditText.text.toString().trim()
             if (query.isNotEmpty()) performSearch(query)
         }
-        // 3. clearButton использует updatePlaceHolderState вместо прямого .visibility = GONE
+
         clearButton.setOnClickListener {
             searchEditText.text?.clear()
             editTextValue = ""
             searchEditText.clearFocus()
             hideKeyboard(searchEditText as View)
             updatePlaceHolderState(isError = false, isEmpty = false)
+            currentPlaceholderState = PlaceholderState.NONE
+            trackListRecyclerView.visibility = View.GONE
         }
     }
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
@@ -121,20 +123,19 @@ class SearchActivity : AppCompatActivity() {
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
-    // 4. Сохраняем состояние плейсхолдера
+
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putString(CONTENT_KEY, editTextValue)
         outState.putString(PLACEHOLDER_STATE_KEY, currentPlaceholderState.name)
     }
+
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         val restoredValue = savedInstanceState.getString(CONTENT_KEY, "")
         editTextValue = restoredValue
     }
-    fun showError(errorMessage: String) {
-        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
-    }
+
     private fun updateUIWithResults(tracks: List<Track>) {
         if (tracks.isEmpty()) {
             updatePlaceHolderState(isError = false, isEmpty = true)
@@ -143,7 +144,7 @@ class SearchActivity : AppCompatActivity() {
             updatePlaceHolderState(isError = false, isEmpty = false)
         }
     }
-    // 5. Исправлен updatePlaceHolderState: контейнер становится VISIBLE + обновляется currentPlaceholderState
+
     private fun updatePlaceHolderState(isError: Boolean, isEmpty: Boolean) {
         when {
             isError -> {
@@ -155,7 +156,6 @@ class SearchActivity : AppCompatActivity() {
                 placeholderText.setText(R.string.network_issues_text)
                 placeholderText.visibility = View.VISIBLE
                 placeholderRefreshButton.visibility = View.VISIBLE
-                Toast.makeText(this, "типа ошибка", Toast.LENGTH_SHORT).show()
             }
             isEmpty -> {
                 currentPlaceholderState = PlaceholderState.NOTHING_FOUND
@@ -176,7 +176,7 @@ class SearchActivity : AppCompatActivity() {
     }
     companion object EditTextContent {
         const val CONTENT_KEY: String = "TEXT_FIELD_CONTENT"
-        const val PLACEHOLDER_STATE_KEY: String = "PLACEHOLDER_STATE"  // 6. Новый ключ
+        const val PLACEHOLDER_STATE_KEY: String = "PLACEHOLDER_STATE"
     }
     private fun performSearch(query: String) {
         val call = SearchApi.iTunesSearchApi.search(query)
