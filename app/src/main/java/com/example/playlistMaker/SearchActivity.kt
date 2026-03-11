@@ -1,5 +1,4 @@
 package com.example.playlistMaker
-
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.MotionEvent
@@ -26,12 +25,12 @@ import com.google.android.material.appbar.MaterialToolbar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 class SearchActivity : AppCompatActivity() {
+    // 1. Добавлены enum и поле состояния плейсхолдера
+    private enum class PlaceholderState { NONE, NOTHING_FOUND, ERROR }
+    private var currentPlaceholderState = PlaceholderState.NONE
     private var editTextValue = ""
     val iTunesBaseStringUrl: String = "https://itunes.apple.com"
-
-
     private lateinit var toolbar: MaterialToolbar
     private lateinit var clearButton: ImageButton
     private lateinit var searchEditText: EditText
@@ -40,68 +39,52 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var placeholderImage: ImageView
     private lateinit var placeholderText: TextView
     private lateinit var placeholderRefreshButton: Button
-
     lateinit var adapter: TrackListAdapter
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
         enableEdgeToEdge()
-
         toolbar = findViewById<MaterialToolbar>(R.id.search_screen_toolbar)
         clearButton = findViewById<ImageButton>(R.id.clearButton)
         searchEditText = findViewById<EditText>(R.id.searchEditText)
         trackListRecyclerView = findViewById<RecyclerView>(R.id.track_list_recycler_view)
-
         trackListListPlaceholderContainer = findViewById<LinearLayout>(R.id.placeholderContainer)
         placeholderImage = findViewById(R.id.placeholderImage)
         placeholderText = findViewById(R.id.placeholderText)
         placeholderRefreshButton = findViewById(R.id.placeholderRefreshButton)
-
         adapter = TrackListAdapter(listOf())
         trackListRecyclerView.adapter = adapter
-
         toolbar.setNavigationOnClickListener { finish() }
-
-
-        /*val trackList = MockedTracks.listOfTracks - замоканные треки нам как буд-то больше и не нужны. Закомменчено и пока что оставлено на старую память. */
         val realTrackList = mutableListOf<Track>()
-
-
-
         trackListRecyclerView.layoutManager = LinearLayoutManager(
-            /*context = */ this,
-            /* orientation = */ RecyclerView.VERTICAL,
-            /* reverseLayout = */ false
+            this, RecyclerView.VERTICAL, false
         )
-
+        // 2. Восстановление состояния после смены темы
         if (savedInstanceState != null) {
             editTextValue = savedInstanceState.getString(CONTENT_KEY, "")
-
             searchEditText.setText(editTextValue)
             searchEditText.setSelection(editTextValue.length)
+            val stateName = savedInstanceState.getString(PLACEHOLDER_STATE_KEY, PlaceholderState.NONE.name)
+            currentPlaceholderState = PlaceholderState.valueOf(stateName)
+            when (currentPlaceholderState) {
+                PlaceholderState.NOTHING_FOUND -> updatePlaceHolderState(isError = false, isEmpty = true)
+                PlaceholderState.ERROR -> updatePlaceHolderState(isError = true, isEmpty = false)
+                PlaceholderState.NONE -> Unit
+            }
         }
-
         searchEditText.addTextChangedListener(
-            beforeTextChanged = { s, _, _, _ ->
-// stub
-            },
+            beforeTextChanged = { s, _, _, _ -> },
             onTextChanged = { s, _, _, _ ->
                 editTextValue = s.toString()
                 clearButton.isVisible = !s.isNullOrEmpty()
             },
-            afterTextChanged = { _ ->
-// stub
-            }
+            afterTextChanged = { _ -> }
         )
-
         searchEditText.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 val query = searchEditText.text.toString().trim()
                 if (query.isNotEmpty()) {
                     val call = SearchApi.iTunesSearchApi.search(query)
-
                     call.enqueue(object : Callback<ITunesSearchResponse> {
                         override fun onResponse(
                             call: Call<ITunesSearchResponse>,
@@ -113,15 +96,11 @@ class SearchActivity : AppCompatActivity() {
                                     trackListRecyclerView.adapter = TrackListAdapter(it.results)
                                     updateUIWithResults(it.results)
                                 }
-
                             } else {
                                 updatePlaceHolderState(isError = true, isEmpty = false)
                             }
                         }
-
                         override fun onFailure(call: Call<ITunesSearchResponse>, t: Throwable) {
-// не показывать загрузку
-// showError("Ошибка сети: ${t.message}")
                             updatePlaceHolderState(isError = true, isEmpty = false)
                         }
                     })
@@ -130,17 +109,15 @@ class SearchActivity : AppCompatActivity() {
             }
             false
         }
-
+        // 3. clearButton использует updatePlaceHolderState вместо прямого .visibility = GONE
         clearButton.setOnClickListener {
             searchEditText.text?.clear()
             editTextValue = ""
             searchEditText.clearFocus()
             hideKeyboard(searchEditText as View)
-            trackListListPlaceholderContainer.visibility = View.GONE
+            updatePlaceHolderState(isError = false, isEmpty = false)
         }
     }
-
-    // Hide keyboard after tapping out of edit text
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
         if (ev.action == MotionEvent.ACTION_DOWN) {
             val currentFocus = currentFocus
@@ -157,29 +134,24 @@ class SearchActivity : AppCompatActivity() {
         }
         return super.dispatchTouchEvent(ev)
     }
-
     private fun hideKeyboard(view: View) {
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
-
+    // 4. Сохраняем состояние плейсхолдера
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putString(CONTENT_KEY, editTextValue)
+        outState.putString(PLACEHOLDER_STATE_KEY, currentPlaceholderState.name)
     }
-
-    // Restore state after Activity is created
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-// Get editText value from the Bundle (nor from the class field)
         val restoredValue = savedInstanceState.getString(CONTENT_KEY, "")
         editTextValue = restoredValue
     }
-
     fun showError(errorMessage: String) {
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
     }
-
     private fun updateUIWithResults(tracks: List<Track>) {
         if (tracks.isEmpty()) {
             updatePlaceHolderState(isError = false, isEmpty = true)
@@ -188,51 +160,39 @@ class SearchActivity : AppCompatActivity() {
             updatePlaceHolderState(isError = false, isEmpty = false)
         }
     }
-
+    // 5. Исправлен updatePlaceHolderState: контейнер становится VISIBLE + обновляется currentPlaceholderState
     private fun updatePlaceHolderState(isError: Boolean, isEmpty: Boolean) {
-
         when {
             isError -> {
-// Скрыть список треков
+                currentPlaceholderState = PlaceholderState.ERROR
                 trackListRecyclerView.visibility = View.GONE
-
-// Показать Иконку ошибки, текст ошибки, кнопку обновить
-                placeholderImage.run {
-                    setImageResource(R.drawable.network_troubles_icon)
-                    visibility = View.VISIBLE
-                }
-                placeholderText.run {
-                    setText(R.string.network_issues_text)
-                    visibility = View.VISIBLE
-                }
+                trackListListPlaceholderContainer.visibility = View.VISIBLE
+                placeholderImage.setImageResource(R.drawable.network_troubles_icon)
+                placeholderImage.visibility = View.VISIBLE
+                placeholderText.setText(R.string.network_issues_text)
+                placeholderText.visibility = View.VISIBLE
                 placeholderRefreshButton.visibility = View.VISIBLE
-
                 Toast.makeText(this, "типа ошибка", Toast.LENGTH_SHORT).show()
             }
-
             isEmpty -> {
+                currentPlaceholderState = PlaceholderState.NOTHING_FOUND
                 trackListRecyclerView.visibility = View.GONE
-
-// Показать Иконку ошибки, текст ошибки. Не показывать кнопку "Обновить".
-                placeholderImage.run {
-                    setImageResource(R.drawable.nothing_found_icon)
-                    visibility = View.VISIBLE
-                }
-                placeholderText.run {
-                    setText(R.string.nothing_found_text)
-                    visibility = View.VISIBLE
-                }
+                trackListListPlaceholderContainer.visibility = View.VISIBLE
+                placeholderImage.setImageResource(R.drawable.nothing_found_icon)
+                placeholderImage.visibility = View.VISIBLE
+                placeholderText.setText(R.string.nothing_found_text)
+                placeholderText.visibility = View.VISIBLE
                 placeholderRefreshButton.visibility = View.GONE
             }
-
             else -> {
+                currentPlaceholderState = PlaceholderState.NONE
                 trackListListPlaceholderContainer.visibility = View.GONE
                 trackListRecyclerView.visibility = View.VISIBLE
             }
         }
     }
-
     companion object EditTextContent {
         const val CONTENT_KEY: String = "TEXT_FIELD_CONTENT"
+        const val PLACEHOLDER_STATE_KEY: String = "PLACEHOLDER_STATE"  // 6. Новый ключ
     }
 }

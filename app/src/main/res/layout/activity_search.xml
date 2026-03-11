@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:fitsSystemWindows="true"
     android:id="@+id/search_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".SearchActivity"
     android:background="@color/recyclerViewBackgroundColor">
-
     <com.google.android.material.appbar.MaterialToolbar
         style="@style/SearchToolbar"
         android:id="@+id/search_screen_toolbar"
         app:title="@string/search_text"
         app:navigationIcon="?attr/homeAsUpIndicator"
-        />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
     <FrameLayout
-        android:layout_width="match_parent"
         android:id="@+id/search_edit_text_container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
         android:paddingHorizontal="@dimen/item_margin_start"
-        android:paddingVertical="8dp">
+        android:paddingVertical="8dp"
+        app:layout_constraintTop_toBottomOf="@id/search_screen_toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
         <EditText
             style="@style/SearchBarColors"
             android:id="@+id/searchEditText"
@@ -47,7 +49,6 @@
             android:paddingBottom="@dimen/item_margin_start"
             android:inputType="text"
             android:maxLines="1" />
-
         <ImageButton
             android:id="@+id/clearButton"
             android:layout_width="@dimen/image_button_size"
@@ -60,15 +61,16 @@
             app:tint="@color/searchBarIcons"
             android:visibility="gone" />
     </FrameLayout>
-
     <LinearLayout
+        android:id="@+id/placeholderContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:id="@+id/placeholderContainer"
+        android:gravity="center_horizontal"
         android:layout_marginTop="210dp"
-        android:gravity="center">
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
         <ImageView
             android:id="@+id/placeholderImage"
             android:layout_width="120dp"
@@ -76,7 +78,6 @@
             android:src="@drawable/nothing_found_icon"
             android:contentDescription="@string/nothing_found_text"
             android:visibility="gone" />
-
         <TextView
             android:id="@+id/placeholderText"
             android:layout_width="wrap_content"
@@ -87,7 +88,6 @@
             android:gravity="center"
             android:textSize="19sp"
             android:visibility="gone" />
-
         <Button
             android:id="@+id/placeholderRefreshButton"
             android:layout_width="wrap_content"
@@ -95,15 +95,16 @@
             android:text="@string/refresh_button_text"
             android:textColor="@color/recyclerViewBackgroundColor"
             android:visibility="gone"
-            android:backgroundTint="@color/colorOnSurface"/>
-
+            android:backgroundTint="@color/colorOnSurface" />
     </LinearLayout>
-
-    <view class="androidx.recyclerview.widget.RecyclerView"
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/track_list_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:background="@color/recyclerViewBackgroundColor">
-    </view>
-</LinearLayout>
+        android:background="@color/recyclerViewBackgroundColor"
+        app:layout_constraintTop_toBottomOf="@id/search_edit_text_container"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
