@@ -43,6 +43,7 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
         enableEdgeToEdge()
+
         toolbar = findViewById<MaterialToolbar>(R.id.search_screen_toolbar)
         clearButton = findViewById<ImageButton>(R.id.clearButton)
         searchEditText = findViewById<EditText>(R.id.searchEditText)
@@ -54,11 +55,10 @@ class SearchActivity : AppCompatActivity() {
         adapter = TrackListAdapter(listOf())
         trackListRecyclerView.adapter = adapter
         toolbar.setNavigationOnClickListener { finish() }
-        val realTrackList = mutableListOf<Track>()
         trackListRecyclerView.layoutManager = LinearLayoutManager(
             this, RecyclerView.VERTICAL, false
         )
-        // 2. Восстановление состояния после смены темы
+
         if (savedInstanceState != null) {
             editTextValue = savedInstanceState.getString(CONTENT_KEY, "")
             searchEditText.setText(editTextValue)
@@ -88,6 +88,7 @@ class SearchActivity : AppCompatActivity() {
             }
             false
         }
+
         placeholderRefreshButton.setOnClickListener {
             val query = searchEditText.text.toString().trim()
             if (query.isNotEmpty()) performSearch(query)
@@ -103,6 +104,7 @@ class SearchActivity : AppCompatActivity() {
             trackListRecyclerView.visibility = View.GONE
         }
     }
+
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
         if (ev.action == MotionEvent.ACTION_DOWN) {
             val currentFocus = currentFocus
@@ -119,6 +121,7 @@ class SearchActivity : AppCompatActivity() {
         }
         return super.dispatchTouchEvent(ev)
     }
+
     private fun hideKeyboard(view: View) {
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)
