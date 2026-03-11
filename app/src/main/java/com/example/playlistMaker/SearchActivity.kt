@@ -198,6 +198,7 @@ class SearchActivity : AppCompatActivity() {
                     updatePlaceHolderState(isError = true, isEmpty = false)
                 }
             }
+
             override fun onFailure(call: Call<ITunesSearchResponse>, t: Throwable) {
                 updatePlaceHolderState(isError = true, isEmpty = false)
             }

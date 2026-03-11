@@ -80,6 +80,7 @@
             android:visibility="gone" />
         <TextView
             android:id="@+id/placeholderText"
+            android:font="@font/ys_display_medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
@@ -87,15 +88,18 @@
             android:layout_marginTop="16dp"
             android:gravity="center"
             android:textSize="19sp"
+            android:textColor="@color/colorOnSurface"
             android:visibility="gone" />
         <Button
             android:id="@+id/placeholderRefreshButton"
+            android:font="@font/ys_display_medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/refresh_button_text"
-            android:textColor="@color/recyclerViewBackgroundColor"
             android:visibility="gone"
-            android:backgroundTint="@color/colorOnSurface" />
+            android:textSize="14sp"
+            android:backgroundTint="@color/colorOnSurface"
+            android:textColor="@color/recyclerViewBackgroundColor"/>
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/track_list_recycler_view"
