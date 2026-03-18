@@ -60,7 +60,6 @@ class TrackListAdapter(
                 .into(albumCover)
         }
 
-        // Вот это нам понадобится для того что бы форматировать миллисекунды в минуты и секунды.
         private fun convertMillisToMinutes(millis: Long?): String {
             return SimpleDateFormat("mm:ss", Locale.getDefault()).format(millis)
         }
