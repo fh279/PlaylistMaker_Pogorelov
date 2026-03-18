@@ -66,13 +66,16 @@
         android:id="@+id/search_history_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintTop_toBottomOf="@id/search_edit_text_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="@dimen/search_history_title_spacing"
         android:orientation="vertical"
         android:visibility="gone"
         tools:visibility="visible"
-        app:layout_constraintTop_toBottomOf="@id/search_edit_text_container"
-        app:layout_constraintEnd_toEndOf="parent"
         >
 
         <TextView
@@ -88,7 +91,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/history_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_marginTop="24dp" />
 
         <com.google.android.material.button.MaterialButton
@@ -97,6 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
             android:font="@font/ys_display_medium"
             android:textSize="14sp"
             android:textColor="@color/recyclerViewBackgroundColor"
