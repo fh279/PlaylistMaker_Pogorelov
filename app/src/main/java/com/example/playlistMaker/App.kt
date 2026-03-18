@@ -7,6 +7,7 @@ import com.example.playlistMaker.searchScreenClasses.SearchHistory
 
 class App : Application() {
     var darkTheme = false
+        private set
 
     override fun onCreate() {
         super.onCreate()

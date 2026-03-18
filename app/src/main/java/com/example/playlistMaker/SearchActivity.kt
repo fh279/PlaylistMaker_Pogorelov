@@ -138,24 +138,20 @@ class SearchActivity : AppCompatActivity() {
 
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
         if (ev.action == MotionEvent.ACTION_DOWN) {
-            val currentFocus = currentFocus
-            if (currentFocus is EditText) {
-                val outRect = Rect()
-                currentFocus.getGlobalVisibleRect(outRect)
-                if (!outRect.contains(ev.rawX.toInt(), ev.rawY.toInt())) {
-                    // Не снимаем фокус, если касание внутри historyContainer
-                    val historyRect = Rect()
-                    historyContainer.getGlobalVisibleRect(historyRect)
-                    if (!historyRect.contains(ev.rawX.toInt(), ev.rawY.toInt())) {
-                        currentFocus.clearFocus()
-                        hideKeyboard(currentFocus)
-                    }
-                }
-            } else if (currentFocus != null) {
-                hideKeyboard(currentFocus)
+            val focused = currentFocus ?: return super.dispatchTouchEvent(ev)
+            if (focused is EditText && !focused.isTouched(ev) && !historyContainer.isTouched(ev)) {
+                focused.clearFocus()
+                hideKeyboard(focused)
+            } else if (focused !is EditText) {
+                hideKeyboard(focused)
             }
         }
         return super.dispatchTouchEvent(ev)
+    }
+    private fun View.isTouched(ev: MotionEvent): Boolean {
+        val rect = Rect()
+        getGlobalVisibleRect(rect)
+        return rect.contains(ev.rawX.toInt(), ev.rawY.toInt())
     }
 
     private fun hideKeyboard(view: View) {
