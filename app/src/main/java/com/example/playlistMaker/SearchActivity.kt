@@ -11,14 +11,16 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.playlistMaker.SearchScreenClasses.ITunesSearchResponse
-import com.example.playlistMaker.SearchScreenClasses.SearchApi
+import com.example.playlistMaker.searchScreenClasses.ITunesSearchResponse
+import com.example.playlistMaker.searchScreenClasses.SearchApi
+import com.example.playlistMaker.searchScreenClasses.SearchHistory
 import com.example.playlistMaker.mediaLibraryClasses.Track
 import com.google.android.material.appbar.MaterialToolbar
 import retrofit2.Call
@@ -26,7 +28,6 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class SearchActivity : AppCompatActivity() {
-    // 1. Добавлены enum и поле состояния плейсхолдера
     private enum class PlaceholderState { NONE, NOTHING_FOUND, ERROR }
     private var currentPlaceholderState = PlaceholderState.NONE
     private var editTextValue = ""
@@ -38,7 +39,13 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var placeholderImage: ImageView
     private lateinit var placeholderText: TextView
     private lateinit var placeholderRefreshButton: Button
-    lateinit var adapter: TrackListAdapter
+    private lateinit var historyContainer: LinearLayout
+    private lateinit var historyTitle: TextView
+    private lateinit var historyRecycler: RecyclerView
+    private lateinit var clearHistoryButton: Button
+    private lateinit var historyAdapter: TrackListAdapter
+    private lateinit var searchHistory: SearchHistory
+    private lateinit var adapter: TrackListAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
@@ -52,12 +59,23 @@ class SearchActivity : AppCompatActivity() {
         placeholderImage = findViewById(R.id.placeholderImage)
         placeholderText = findViewById(R.id.placeholderText)
         placeholderRefreshButton = findViewById(R.id.placeholderRefreshButton)
-        adapter = TrackListAdapter(listOf())
-        trackListRecyclerView.adapter = adapter
-        toolbar.setNavigationOnClickListener { finish() }
-        trackListRecyclerView.layoutManager = LinearLayoutManager(
-            this, RecyclerView.VERTICAL, false
+        historyContainer = findViewById(R.id.search_history_layout)
+        historyTitle = findViewById(R.id.tvHistoryTitle)
+        historyRecycler = findViewById(R.id.history_recycler_view)
+        clearHistoryButton = findViewById(R.id.clear_history_button)
+        searchHistory = SearchHistory(
+            getSharedPreferences(SearchHistory.PREFS_NAME, MODE_PRIVATE)
         )
+
+        adapter = TrackListAdapter(listOf()) { onTrackClicked(it) }
+        trackListRecyclerView.adapter = adapter
+
+        trackListRecyclerView.layoutManager =
+            LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        historyAdapter = TrackListAdapter(listOf()) {}
+        historyRecycler.adapter = historyAdapter
+        historyRecycler.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        toolbar.setNavigationOnClickListener { finish() }
 
         if (savedInstanceState != null) {
             editTextValue = savedInstanceState.getString(CONTENT_KEY, "")
@@ -77,16 +95,27 @@ class SearchActivity : AppCompatActivity() {
             onTextChanged = { s, _, _, _ ->
                 editTextValue = s.toString()
                 clearButton.isVisible = !s.isNullOrEmpty()
+                if (searchEditText.hasFocus() && searchEditText.text.isEmpty()) {
+                    showHistoryIfAvailable()
+                } else {
+                    hideHistory()
+                }
             },
             afterTextChanged = { _ -> /* Stub */ }
         )
+        searchEditText.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus && searchEditText.text.isEmpty()) {
+                showHistoryIfAvailable()
+            }
+        }
         searchEditText.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 val query = searchEditText.text.toString().trim()
                 if (query.isNotEmpty()) performSearch(query)
                 true
+            } else {
+                false
             }
-            false
         }
 
         placeholderRefreshButton.setOnClickListener {
@@ -98,10 +127,12 @@ class SearchActivity : AppCompatActivity() {
             searchEditText.text?.clear()
             editTextValue = ""
             searchEditText.clearFocus()
-            hideKeyboard(searchEditText as View)
-            updatePlaceHolderState(isError = false, isEmpty = false)
-            currentPlaceholderState = PlaceholderState.NONE
             trackListRecyclerView.visibility = View.GONE
+        }
+
+        clearHistoryButton.setOnClickListener {
+            searchHistory.clear()
+            hideHistory()
         }
     }
 
@@ -112,8 +143,13 @@ class SearchActivity : AppCompatActivity() {
                 val outRect = Rect()
                 currentFocus.getGlobalVisibleRect(outRect)
                 if (!outRect.contains(ev.rawX.toInt(), ev.rawY.toInt())) {
-                    currentFocus.clearFocus()
-                    hideKeyboard(currentFocus)
+                    // Не снимаем фокус, если касание внутри historyContainer
+                    val historyRect = Rect()
+                    historyContainer.getGlobalVisibleRect(historyRect)
+                    if (!historyRect.contains(ev.rawX.toInt(), ev.rawY.toInt())) {
+                        currentFocus.clearFocus()
+                        hideKeyboard(currentFocus)
+                    }
                 }
             } else if (currentFocus != null) {
                 hideKeyboard(currentFocus)
@@ -181,6 +217,34 @@ class SearchActivity : AppCompatActivity() {
         const val CONTENT_KEY: String = "TEXT_FIELD_CONTENT"
         const val PLACEHOLDER_STATE_KEY: String = "PLACEHOLDER_STATE"
     }
+
+    private fun showHistoryIfAvailable() {
+        val history = searchHistory.getHistory()
+        if (history.isNotEmpty() && searchEditText.hasFocus() && searchEditText.text.isEmpty()) {
+            historyAdapter.updateTracks(history)
+            historyContainer.isVisible = true
+            trackListRecyclerView.isVisible = false
+            trackListListPlaceholderContainer.isVisible = false
+            placeholderImage.isVisible = false
+        } else {
+            hideHistory()
+        }
+    }
+
+    private fun hideHistory() {
+        historyContainer.isVisible = false
+    }
+
+    private fun onTrackClicked(track: Track) {
+        Toast.makeText(
+            this,
+            R.string.toast_track_added_text,
+            Toast.LENGTH_SHORT
+        ).show()
+
+        searchHistory.addTrack(track)
+        // showHistoryIfAvailable()
+    }
     private fun performSearch(query: String) {
         val call = SearchApi.iTunesSearchApi.search(query)
         call.enqueue(object : Callback<ITunesSearchResponse> {
@@ -191,7 +255,6 @@ class SearchActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val searchResponse = response.body()
                     searchResponse?.let {
-                        trackListRecyclerView.adapter = TrackListAdapter(it.results)
                         updateUIWithResults(it.results)
                     }
                 } else {
