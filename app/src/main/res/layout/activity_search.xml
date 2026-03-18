@@ -82,7 +82,7 @@
             android:layout_gravity="center"
             android:textColor="@color/colorOnSurface"
             android:font="@font/ys_display_medium"
-            android:textSize="19sp"
+            android:textSize="@dimen/search_title_text_size"
             android:text="@string/search_history_title" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -132,7 +132,7 @@
             android:layout_marginBottom="24dp"
             android:layout_marginTop="16dp"
             android:gravity="center"
-            android:textSize="19sp"
+            android:textSize="@dimen/search_title_text_size"
             android:textColor="@color/colorOnSurface"
             android:visibility="gone" />
         <Button
