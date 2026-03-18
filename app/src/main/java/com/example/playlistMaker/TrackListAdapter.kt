@@ -1,6 +1,5 @@
 package com.example.playlistMaker
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,8 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 class TrackListAdapter(
-    private val trackList: List<Track>
+    private var trackList: List<Track>,
+    private val onTrackListItemClick: (Track) -> Unit
 ) : RecyclerView.Adapter<TrackListAdapter.TrackListViewHolder>() {
 
     val a = 10
@@ -30,7 +30,11 @@ class TrackListAdapter(
     }
 
     override fun onBindViewHolder(holder: TrackListViewHolder, position: Int) {
-        holder.bind(model = trackList[position])
+        val track = trackList[position]
+        holder.bind(track)
+        holder.itemView.setOnClickListener {
+            onTrackListItemClick(track)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -56,14 +60,13 @@ class TrackListAdapter(
                 .into(albumCover)
         }
 
-        // Вот это нам понадобится для того что бы форматировать миллисекунды в минуты и секунды.
         private fun convertMillisToMinutes(millis: Long?): String {
             return SimpleDateFormat("mm:ss", Locale.getDefault()).format(millis)
         }
     }
 
     fun updateTracks(newTracks: List<Track>) {
-        tracks = newTracks
+        trackList = newTracks
         notifyDataSetChanged()
     }
 }

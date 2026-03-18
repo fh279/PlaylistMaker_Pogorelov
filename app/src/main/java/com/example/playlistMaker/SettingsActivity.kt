@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SwitchCompat
 import androidx.core.net.toUri
 import com.google.android.material.appbar.MaterialToolbar
 
@@ -18,6 +19,16 @@ class SettingsActivity : AppCompatActivity() {
         enableEdgeToEdge()
 
         setUpToolbar()
+
+        val application = applicationContext as App
+
+        val themeSwitcher = findViewById<SwitchCompat>(R.id.theme_switcher).apply {
+            isChecked = application.darkTheme
+            setOnCheckedChangeListener { _, checked ->
+                application.switchTheme(checked)
+            }
+        }
+
         setUpShareButton()
         setUpSupportButton()
         setUpUserAgreementButton()
@@ -25,10 +36,13 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun setUpToolbar() {
         val toolbar = findViewById<MaterialToolbar>(R.id.settings_screen_toolbar)
+
         toolbar.setNavigationOnClickListener {
             finish()
         }
     }
+
+
 
     private fun setUpShareButton() {
         val btnShareApp = findViewById<LinearLayout>(R.id.btnShareApp)
@@ -59,8 +73,6 @@ class SettingsActivity : AppCompatActivity() {
         btnUserAgreement.setOnClickListener {
             openUserAgreement(link.toUri())
         }
-
-
     }
 
     private fun openUrlInBrowser(url: String) {

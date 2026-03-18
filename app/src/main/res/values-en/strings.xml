@@ -24,4 +24,7 @@
     <string name="nothing_found_text">Nothing found</string>
     <string name="network_issues_text">Problems with network\n\nLoading failed. Check internet connection</string>
     <string name="refresh_button_text">Refresh</string>
+    <string name="search_history_title">Searched previously</string>
+    <string name="clear_history_button_text">Clear history</string>
+    <string name="toast_track_added_text">Track added</string>
 </resources>

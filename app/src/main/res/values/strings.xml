@@ -30,5 +30,8 @@
     <string name="nothing_found_text">Ничего не нашлось</string>
     <string name="network_issues_text">Проблемы со связью\n\nЗагрузка не удалась. Проверьте подключение к интернету</string>
     <string name="refresh_button_text">Обновить</string>
+    <string name="search_history_title">Вы искали</string>
+    <string name="clear_history_button_text">Очистить историю</string>
+    <string name="toast_track_added_text">Трек добавлен</string>
 
 </resources>

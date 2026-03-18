@@ -1,4 +1,4 @@
-package com.example.playlistMaker.SearchScreenClasses
+package com.example.playlistMaker.searchScreenClasses
 
 import com.example.playlistMaker.mediaLibraryClasses.Track
 

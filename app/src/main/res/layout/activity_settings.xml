@@ -25,8 +25,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dark_theme_text" />
-        <Switch
+        <androidx.appcompat.widget.SwitchCompat
             style="@style/SettingsSwitch"
+            android:id="@+id/theme_switcher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
