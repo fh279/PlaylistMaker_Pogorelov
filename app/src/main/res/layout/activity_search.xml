@@ -67,27 +67,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/search_history_title_spacing"
         android:orientation="vertical"
         android:visibility="gone"
         tools:visibility="visible"
         app:layout_constraintTop_toBottomOf="@id/search_edit_text_container"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        ><!--зачем тут отступ по горизонтали в 10дп? и какой отступ должен быть по вертикали??-->
+        >
 
         <TextView
             android:id="@+id/tvHistoryTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:textColor="@color/colorOnSurface"
+            android:font="@font/ys_display_medium"
+            android:textSize="19sp"
             android:text="@string/search_history_title" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/history_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="24dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/clear_history_button"
@@ -95,6 +97,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="24dp"
+            android:font="@font/ys_display_medium"
+            android:textSize="14sp"
+            android:textColor="@color/recyclerViewBackgroundColor"
+            android:backgroundTint="@color/colorOnSurface"
             android:text="@string/clear_history_button_text" />
 
     </LinearLayout>

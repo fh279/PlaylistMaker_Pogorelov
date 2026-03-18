@@ -11,5 +11,6 @@
     <dimen name="item_text_size_common">16sp</dimen>
     <dimen name="tracklist_song_title_text_size">13sp</dimen>
     <dimen name="tracklist_artist_and_time_text_size">11sp</dimen>
+    <dimen name="search_history_title_spacing">42dp</dimen>
 
 </resources>
