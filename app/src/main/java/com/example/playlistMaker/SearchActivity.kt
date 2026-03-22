@@ -1,4 +1,5 @@
 package com.example.playlistMaker
+import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.MotionEvent
@@ -11,7 +12,6 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -72,7 +72,7 @@ class SearchActivity : AppCompatActivity() {
 
         trackListRecyclerView.layoutManager =
             LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        historyAdapter = TrackListAdapter(listOf()) {}
+        historyAdapter = TrackListAdapter(listOf()) { onTrackClicked(it) }
         historyRecycler.adapter = historyAdapter
         historyRecycler.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         toolbar.setNavigationOnClickListener { finish() }
@@ -232,14 +232,12 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun onTrackClicked(track: Track) {
-        Toast.makeText(
-            this,
-            R.string.toast_track_added_text,
-            Toast.LENGTH_SHORT
-        ).show()
-
         searchHistory.addTrack(track)
-        // showHistoryIfAvailable()
+        // showHistoryIfAvailable() - это точно тут не надо?
+
+        val intent = Intent(this, PlayerActivity::class.java)
+        intent.putExtra(PlayerActivity.EXTRA_TRACK, track)
+        startActivity(intent)
     }
     private fun performSearch(query: String) {
         val call = SearchApi.iTunesSearchApi.search(query)

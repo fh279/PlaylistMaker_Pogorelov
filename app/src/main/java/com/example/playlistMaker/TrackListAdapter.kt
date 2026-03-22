@@ -60,9 +60,7 @@ class TrackListAdapter(
                 .into(albumCover)
         }
 
-        private fun convertMillisToMinutes(millis: Long?): String {
-            return SimpleDateFormat("mm:ss", Locale.getDefault()).format(millis)
-        }
+
     }
 
     fun updateTracks(newTracks: List<Track>) {

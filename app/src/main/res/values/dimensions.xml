@@ -5,13 +5,17 @@
     <dimen name="main_screen_text_icon_padding">8dp</dimen>
     <dimen name="main_screen_button_icon_size">24dp</dimen>
     <dimen name="main_screen_button_corner_radius">16dp</dimen>
+    <dimen name="player_icon_radius">16dp</dimen>
     <dimen name="settings_screen_item_height">60dp</dimen>
     <dimen name="item_margin_start">16dp</dimen>
     <dimen name="image_button_size">16dp</dimen>
     <dimen name="item_text_size_common">16sp</dimen>
-    <dimen name="tracklist_song_title_text_size">13sp</dimen>
+    <dimen name="song_data_text_size">13sp</dimen>
     <dimen name="tracklist_artist_and_time_text_size">11sp</dimen>
     <dimen name="search_history_title_spacing">42dp</dimen>
     <dimen name="search_title_text_size">19sp</dimen>
+    <dimen name="padding_medium">24dp</dimen>
+    <dimen name="padding_">16dp</dimen>
+    <dimen name="player_icons_radius">8dp</dimen>
 
 </resources>

@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="16sp"
                 android:text="@string/song_title_draft"
-                android:textSize="@dimen/tracklist_song_title_text_size"
+                android:textSize="@dimen/song_data_text_size"
                 android:textColor="@color/colorOnSurface"
                 android:ellipsize="end"
                 android:maxLines="1"
