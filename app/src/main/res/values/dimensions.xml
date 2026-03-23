@@ -15,7 +15,9 @@
     <dimen name="search_history_title_spacing">42dp</dimen>
     <dimen name="search_title_text_size">19sp</dimen>
     <dimen name="padding_medium">24dp</dimen>
+    <dimen name="padding_large">30dp</dimen>
     <dimen name="padding_">16dp</dimen>
     <dimen name="player_icons_radius">8dp</dimen>
+    <dimen name="album_cover_side">100dp</dimen>
 
 </resources>

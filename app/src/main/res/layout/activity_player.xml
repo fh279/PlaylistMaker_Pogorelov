@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/Theme.PlaylistMaker"
+    android:theme="@style/Base.Theme.PlaylistMaker"
     tools:context=".PlayerActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/player_root"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorOnPrimary"
+        android:background="@color/searchScreenBackgroundColor"
         android:fitsSystemWindows="true"
         android:orientation="vertical"
         android:paddingBottom="24dp">
@@ -43,8 +43,7 @@
                 android:id="@+id/player_album_cover_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:contentDescription="Image"
-                />
+                android:contentDescription="Image" />
         </androidx.cardview.widget.CardView>
 
 
@@ -103,11 +102,11 @@
 
         <ImageButton
             android:id="@+id/player_screen_play_button"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="@dimen/padding_medium"
+            android:layout_width="@dimen/album_cover_side"
+            android:layout_height="@dimen/album_cover_side"
+            android:layout_marginTop="@dimen/padding_large"
             android:background="@drawable/button_round"
-            android:backgroundTint="@color/colorOnPrimary"
+            android:backgroundTint="@color/searchScreenBackgroundColor"
             android:contentDescription="@string/content_description_button_play"
             android:src="@drawable/button_play"
             app:layout_constraintEnd_toStartOf="@id/player_screen_add_to_favourites_button"
@@ -133,7 +132,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/padding_medium"
-            android:layout_marginTop="@dimen/padding_"
+            android:layout_marginTop="30dp"
             android:fontFamily="@font/ys_display_regular"
             android:gravity="start"
             android:text="@string/track_duration"
@@ -187,7 +186,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/player_screen_album_label_text"
             app:layout_constraintWidth_percent="0.667"
-            tools:text="Yesterday (Remastered 2009)" />
+            tools:text="@string/album_text_stub" />
 
         <TextView
             android:id="@+id/player_screen_year_label_text"
@@ -213,7 +212,7 @@
             android:textSize="@dimen/song_data_text_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/player_screen_year_label_text"
-            tools:text="1965" />
+            tools:text="@string/year_text_stub" />
 
         <TextView
             android:id="@+id/player_screen_genre_label_text"
@@ -239,7 +238,7 @@
             android:textSize="@dimen/song_data_text_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/player_screen_genre_label_text"
-            tools:text="Rock" />
+            tools:text="@string/genre_text_stub" />
 
         <TextView
             android:id="@+id/player_screen_country_label_text"
@@ -265,7 +264,7 @@
             android:textSize="@dimen/song_data_text_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/player_screen_country_label_text"
-            tools:text="Великобритания" />
+            tools:text="@string/country_text_stub" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

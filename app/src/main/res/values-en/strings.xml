@@ -32,4 +32,9 @@
     <string name="year_text">Year</string>
     <string name="artist_country_text">Country</string>
     <string name="artist_genre_text">Genre</string>
+    <string name="country_text_stub">Country</string>
+    <string name="genre_text_stub">Genre</string>
+    <string name="year_text_stub">Year</string>
+    <string name="album_text_stub">Album</string>
+    <string name="track_duration">Duration</string>
 </resources>

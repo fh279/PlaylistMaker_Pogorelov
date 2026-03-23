@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     android:id="@+id/settingsScreen"
     tools:context=".SettingsActivity"
-    android:background="@color/recyclerViewBackgroundColor">
+    android:background="@color/searchScreenBackgroundColor">
 
     <com.google.android.material.appbar.MaterialToolbar
         style="@style/SettingsToolbar"

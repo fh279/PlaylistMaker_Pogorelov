@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="61dp"
         android:orientation="horizontal"
-        android:background="@color/recyclerViewBackgroundColor"
+        android:background="@color/searchScreenBackgroundColor"
         >
         <androidx.cardview.widget.CardView
             android:layout_width="45dp"
