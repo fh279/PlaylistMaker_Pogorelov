@@ -43,5 +43,6 @@
     <string name="content_description_button_play" translatable="false">button_play</string>
     <string name="album_cover_image" translatable="false">Album cover image</string>
     <string name="track_duration" translatable="false">Duration</string>
+    <string name="hardcoded_playback_progress_text" translatable="false">0:30</string>
 
 </resources>

@@ -13,7 +13,8 @@ data class Track(
     @SerializedName("trackTimeMillis")
     val trackTime: Long?,
 
-    val artworkUrl100: String?,
+    @SerializedName("artworkUrl100")
+    val url: String?,
 
     @SerializedName("collectionName")
     val collectionName: String? = null,
@@ -28,6 +29,10 @@ data class Track(
     val country: String? = null
 ) : Serializable {
     fun getCoverArtwork(): String? {
-        return artworkUrl100?.replaceAfterLast('/', "512x512bb.jpg")
+        return url?.takeIf { '/' in it }?.replaceAfterLast('/', LARGE_COVER_RESOLUTION)
+    }
+
+    companion object {
+        private const val LARGE_COVER_RESOLUTION: String = "512x512bb.jpg"
     }
 }

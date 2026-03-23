@@ -8,8 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.playlistMaker.mediaLibraryClasses.Track
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 class TrackListAdapter(
     private var trackList: List<Track>,
@@ -53,14 +51,12 @@ class TrackListAdapter(
             "${model.artistName} • ${convertMillisToMinutes(model.trackTime)}".also { artistAndTime.text = it }
             Glide
                 .with(itemView)
-                .load(model.artworkUrl100)
+                .load(model.url)
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.placeholder)
                 .centerCrop()
                 .into(albumCover)
         }
-
-
     }
 
     fun updateTracks(newTracks: List<Track>) {

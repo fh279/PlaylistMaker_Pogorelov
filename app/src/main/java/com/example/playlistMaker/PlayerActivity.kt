@@ -29,7 +29,6 @@ class PlayerActivity : AppCompatActivity() {
         }
 
         val toolbar = findViewById<MaterialToolbar>(R.id.player_screen_toolbar)
-        val albumCoverContainer: CardView = findViewById(R.id.player_album_cover)
         val albumCover: ImageView = findViewById(R.id.player_album_cover_image)
 
         val trackTitleText: TextView = findViewById(R.id.player_screen_track_title)
@@ -46,8 +45,6 @@ class PlayerActivity : AppCompatActivity() {
         val genreLabelView: TextView = findViewById(R.id.player_screen_genre_value_text)
         val countryLabelView: TextView = findViewById(R.id.player_screen_country_value_text)
 
-
-        val playbackProgressView: TextView = findViewById(R.id.player_screen_playBack_process_text)
         val playButton: ImageButton = findViewById(R.id.player_screen_play_button)
 
         toolbar.setNavigationOnClickListener { finish() }
@@ -62,7 +59,6 @@ class PlayerActivity : AppCompatActivity() {
 
             durationText.let {
                 trackTimeValueTextView.text = it
-                playbackProgressView.text = it
             }
 
             if (track.collectionName.isNullOrEmpty()) {
