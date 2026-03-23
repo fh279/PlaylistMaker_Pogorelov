@@ -14,7 +14,7 @@
         android:background="@color/searchScreenBackgroundColor"
         android:fitsSystemWindows="true"
         android:orientation="vertical"
-        android:paddingBottom="24dp">
+        android:paddingBottom="@dimen/padding_player_text">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/player_screen_toolbar"
@@ -126,12 +126,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/player_screen_play_button" />
-
+sdfsdfsdfsdf
         <TextView
             android:id="@+id/player_screen_time_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/padding_medium"
+            android:layout_marginHorizontal="@dimen/padding_player_text"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/ys_display_regular"
             android:gravity="start"
@@ -145,7 +145,7 @@
             android:id="@+id/player_screen_time_value"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/padding_medium"
+            android:layout_marginHorizontal="@dimen/padding_player_text"
             android:fontFamily="@font/ys_text_regular"
             android:gravity="end"
             android:text="@string/track_duration_text"
@@ -154,13 +154,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/player_screen_time_label" />
 
-
         <TextView
             android:id="@+id/player_screen_album_label_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/padding_medium"
-            android:layout_marginTop="@dimen/padding_"
+            android:layout_marginHorizontal="@dimen/padding_player_text"
+            android:layout_marginTop="@dimen/padding_player_text"
             android:fontFamily="@font/ys_text_regular"
             android:text="@string/album_text"
             android:textColor="@color/light_gray_song_labels_data"
@@ -172,7 +171,7 @@
             android:id="@+id/player_screen_album_value_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/padding_medium"
+            android:layout_marginHorizontal="@dimen/padding_player_text"
             android:ellipsize="end"
             android:fontFamily="@font/ys_text_regular"
             android:gravity="end"
@@ -192,8 +191,8 @@
             android:id="@+id/player_screen_year_label_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/padding_medium"
-            android:layout_marginTop="@dimen/padding_"
+            android:layout_marginHorizontal="@dimen/padding_player_text"
+            android:layout_marginTop="@dimen/padding_player_text"
             android:fontFamily="@font/ys_text_regular"
             android:text="@string/year_text"
             android:textColor="@color/light_gray_song_labels_data"
@@ -205,7 +204,7 @@
             android:id="@+id/player_screen_year_value_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/padding_medium"
+            android:layout_marginHorizontal="@dimen/padding_player_text"
             android:fontFamily="@font/ys_text_regular"
             android:gravity="end"
             android:textColor="@color/colorOnSurface"
@@ -218,7 +217,7 @@
             android:id="@+id/player_screen_genre_label_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/padding_medium"
+            android:layout_marginHorizontal="@dimen/padding_player_text"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/ys_text_regular"
             android:text="@string/artist_genre_text"
@@ -231,7 +230,7 @@
             android:id="@+id/player_screen_genre_value_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/padding_medium"
+            android:layout_marginHorizontal="@dimen/padding_player_text"
             android:fontFamily="@font/ys_text_regular"
             android:gravity="end"
             android:textColor="@color/colorOnSurface"
@@ -244,7 +243,7 @@
             android:id="@+id/player_screen_country_label_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/padding_medium"
+            android:layout_marginHorizontal="@dimen/padding_player_text"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/ys_text_regular"
             android:text="@string/artist_country_text"
@@ -257,7 +256,7 @@
             android:id="@+id/player_screen_country_value_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/padding_medium"
+            android:layout_marginHorizontal="@dimen/padding_player_text"
             android:fontFamily="@font/ys_text_regular"
             android:gravity="end"
             android:textColor="@color/colorOnSurface"
