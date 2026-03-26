@@ -33,5 +33,20 @@
     <string name="search_history_title">Вы искали</string>
     <string name="clear_history_button_text">Очистить историю</string>
     <string name="toast_track_added_text">Трек добавлен</string>
+    <string name="track_duration_text">Длительность</string>
+    <string name="album_text">Альбом</string>
+    <string name="year_text">Год</string>
+    <string name="artist_country_text">Страна</string>
+    <string name="artist_genre_text">Жанр</string>
+    <string name="content_description_button_add_to_favourites" translatable="false">button_add_to_favourites</string>
+    <string name="content_description_button_add_to_playlist" translatable="false">button_add_to_playlist</string>
+    <string name="content_description_button_play" translatable="false">button_play</string>
+    <string name="album_cover_image" translatable="false">Album cover image</string>
+    <string name="hardcoded_playback_progress_text" translatable="false">0:30</string>
+    <string name="country_text_stub">Страна</string>
+    <string name="genre_text_stub">Жанр</string>
+    <string name="year_text_stub">Год</string>
+    <string name="album_text_stub">Альбом</string>
+    <string name="track_duration">Длительность</string>
 
 </resources>

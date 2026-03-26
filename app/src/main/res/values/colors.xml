@@ -7,5 +7,11 @@
     <color name="colorOnSurfaceVariant">#AEAFB4</color> <!--серый-->
     <color name="colorOnSurfaceInverse">#FFFFFF</color> <!--белый-->
     <color name="searchBarIcons">#AEAFB4</color> <!--серый-->
-    <color name="recyclerViewBackgroundColor">#FFFFFF</color> <!--белый-->
+    <color name="searchScreenBackgroundColor">#FFFFFF</color> <!--белый-->
+
+    <color name="light_gray">#E6E8EB</color>
+    <color name="light_gray_song_labels_data">#AEAFB4</color>
+
+    <color name="switch_thumb_tint_color">#00D6C3</color>
+    <color name="switch_track_tint_color">#76EAE0</color>
 </resources>

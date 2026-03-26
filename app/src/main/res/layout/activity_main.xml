@@ -5,7 +5,6 @@
     style="@style/MainAndSettingsScreenCommonAttributes"
     android:layout_weight="1"
     android:background="?attr/colorPrimary"
-    android:fitsSystemWindows="true"
     android:paddingHorizontal="16dp">
 
     <com.google.android.material.appbar.MaterialToolbar
